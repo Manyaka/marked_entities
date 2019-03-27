@@ -1,0 +1,48 @@
+{
+  "useConfigFiles": true,
+  "useTaobaoRegistry": false,
+  "packageManager": "npm",
+  "plugins": {
+    "@vue/cli-plugin-babel": {},
+    "@vue/cli-plugin-eslint": {},
+    "@vue/cli-plugin-unit-jest": {}
+  },
+  "configs": {
+    "vue": {},
+    "postcss": {},
+    "eslintConfig": {},
+    "jest": {}
+  }
+}
+
+{
+  "useTaobaoRegistry": false,
+  "latestVersion": "3.5.2",
+  "lastChecked": 1553661144209,
+  "packageManager": "yarn",
+  "presets": {
+    "vue_preset.json": {
+      "useConfigFiles": true,
+      "plugins": {
+        "@vue/cli-plugin-babel": {},
+        "@vue/cli-plugin-typescript": {
+          "classComponent": true,
+          "useTsWithBabel": true
+        },
+        "@vue/cli-plugin-pwa": {},
+        "@vue/cli-plugin-eslint": {
+          "config": "prettier",
+          "lintOn": [
+            "save"
+          ]
+        },
+        "@vue/cli-plugin-unit-jest": {},
+        "@vue/cli-plugin-e2e-nightwatch": {}
+      },
+      "router": true,
+      "routerHistoryMode": true,
+      "vuex": true,
+      "cssPreprocessor": "node-sass"
+    }
+  }
+}
