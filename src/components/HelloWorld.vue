@@ -11,4 +11,4 @@
   };
 </script>
 
-<style scoped src="./HellowWorld.css"></style>
+<style scoped src="./HelloWorld.css"></style>
