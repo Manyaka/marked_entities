@@ -14,6 +14,7 @@
 .main__text {
   background-color: gold;
   width: 60%;
+  padding: 0.8em;
 }
 
 .main__checkboxes {
@@ -24,5 +25,5 @@
 
 .result {
   background-color: lavender;
-  min-height: 10vh;
+  min-height: 20vh;
 }

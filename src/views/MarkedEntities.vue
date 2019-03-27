@@ -4,8 +4,11 @@
       <div class="main__text">{{ mainText }}</div>
       <div class="main__checkboxes">
         <ul class="checkboxes-list">
-          <li class="checkboxes-list__item" v-for="checkbox in mainCheckboxes"
-              v-bind:key="checkbox.id">
+          <li
+            class="checkboxes-list__item"
+            v-for="checkbox in mainCheckboxes"
+            v-bind:key="checkbox.id"
+          >
             <span class="pseudo-checkbox"></span> {{ checkbox.label }}
           </li>
         </ul>
@@ -22,13 +25,26 @@
   //получить данные из json
   // let mainText = require('@/json/mainText.json');
   /*let mainCheckboxes = fetch('https://api.github.com/users/chriscoyier/repos')
-    .then(response => response.json())
-    .then(data => {
-    console.log('data=', data);
-    }
-  );
-  console.log('mainCheckboxes=', mainCheckboxes);*/
-  let mainText = "mainText";
+     .then(response => response.json())
+     .then(data => {
+     console.log('data=', data);
+     }
+     );
+     console.log('mainCheckboxes=', mainCheckboxes);*/
+
+  let mainText =
+    'При транскрибировании терминов корейской топонимики односложные ' +
+    'номенклатурные термины, за некоторыми исключениями, сохраняются в транскрипции. ' +
+    'Они пишутся слитно с собственным названием и повторяются также в переводе; ' +
+    'например: 한강 — река Ханган, 백두산 — гора Пэктусан, 제주도 остров Чеджудо, ' +
+    '평안도 — провинция Пхёнандо, 광안동 — квартал Кванандон, 연화리 — деревня Йонхвари и т. д.' +
+    ' Исключение составляют односложные номенклатурные термины, обозначающие город (시), ' +
+    'уезд (군), район города (구), уездный город или административный центр уезда (읍), ' +
+    'волость (면): 김해시 — город Кимхэ, 평창군 — уезд Пхёнчхан, 수영구 — район Суён, ' +
+    '흥해읍 — уездный город Хынхэ, 철마면 — волость Чхольма. Однако в сочетании с ' +
+    'односложными названиями они всегда передаются в транскрипции: 동면 — волость ' +
+    'Тонмён, 북구 — район Пукку.[2]';
+
   let mainCheckboxes = [
     {
       "id": 0,
@@ -47,7 +63,7 @@
     name: 'MarkedEntities',
     data() {
       return {
-        mainText: 'mainText',
+        mainText: mainText,
         mainCheckboxes: mainCheckboxes,
         mainResult: ''
         // publicPath: process.env.BASE_URL
