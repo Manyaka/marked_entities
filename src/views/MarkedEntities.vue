@@ -1,25 +1,22 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <div class="main__text"><Text /></div>
-      <div class="main__checkboxes"><Checkboxes /></div>
+      <div class="main__text">{{ mainText }}</div>
+      <div class="main__checkboxes">{{ mainCheckboxes }}</div>
     </div>
-    <div class="result"><Result /></div>
+    <div class="result">{{ mainResult }}</div>
   </div>
 </template>
 
 <script>
-  import Text from '@/components/Text.vue'
-  import Checkboxes from '@/components/Checkboxes.vue'
-  import Result from '@/components/Result.vue'
-
   export default {
     name: 'MarkedEntities',
-    props: {},
-    components: {
-      Text,
-      Checkboxes,
-      Result
+    data() {
+      return {
+        mainText: 'mainText',
+        mainCheckboxes: 'mainCheckboxes',
+        mainResult: 'mainResult'
+      }
     }
   };
 </script>
