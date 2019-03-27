@@ -1,16 +1,16 @@
 <template>
   <div data-id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <MarkedEntities />
   </div>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld.vue';
+  import MarkedEntities from './views/MarkedEntities.vue';
 
   export default {
     name: 'app',
     components: {
-      HelloWorld
+      MarkedEntities
     }
   };
 </script>
