@@ -1,9 +1,10 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <input type="text" v-model="firstName">
-      <input type="text" v-model="lastName">
-      {{ getFullName() }}
+      <input type="text" v-model="firstName"/>
+      <input type="text" v-model="lastName"/>
+      <input type="number" v-model="age"/>
+      <!--{{ fullName }}-->
     </div>
   </div>
 </template>
@@ -14,17 +15,23 @@
     data() {
       return {
         firstName: 'Маша',
-        lastName: 'Нагорных'
+        lastName: 'Нагорных',
+        age: 37
+      };
+    },
+    computed: {
+      fullName() {
+        console.log('функция сработала');
+        return `${this.lastName} ${this.firstName}`;
       }
     },
-    methods: {
-      getFullName() {
-        return `${this.lastName} ${this.firstName}`
+    watch: {
+      'firstName'(newValue) {
+        console.log(newValue);
       }
-    }
+    },
+    methods: {}
   };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

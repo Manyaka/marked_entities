@@ -35,17 +35,17 @@
 <script>
   function mn(target) {
     let selObj = document.getSelection();
-    console.log(`selObj from ${target}=`, selObj.toString());
+    // console.log(`selObj from ${target}=`, selObj.toString());
   }
 
   document.onselectstart = function() {
-    console.log('Selection started!');
+    // console.log('Selection started!');
     // mn('start');
   };
 
   // не фаерится внутри вью
   document.onselectionchange = function() {
-    console.log('Selection change!'); //изменяется на каждый символ
+    // console.log('Selection change!'); //изменяется на каждый символ
     mn('change');
   };
 
