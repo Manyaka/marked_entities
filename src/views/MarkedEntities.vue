@@ -1,7 +1,11 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <div class="main__text">{{ mainText }}</div>
+      <div class="main__text"
+           v-bind="initSelection"
+      >
+        {{ mainText }}</div>
+
       <div class="main__checkboxes">
         <ul class="checkboxes-list">
           <li
@@ -9,21 +13,41 @@
             v-for="checkbox in mainCheckboxes"
             v-bind:key="checkbox.id"
           >
-            <span class="pseudo-checkbox"></span> {{ checkbox.label }}
+            <input type="checkbox"
+                   v-bind:name="checkbox.label"
+                   v-bind:id="'ch' + checkbox.id"/>
+            <label class="checkboxes-list__label"
+                   v-bind:for="'ch' + checkbox.id"
+            >
+              {{ checkbox.label }}</label>
           </li>
         </ul>
       </div>
     </div>
+
+    <button class="btn"
+            v-on:click="addToSelectionResult"
+    >Добавить в selection</button>
+
     <div class="result">{{ mainResult }}</div>
   </div>
 </template>
 
 <script>
-  // let selObj = window.getSelection();
-  // console.log('selObj=', selObj);
-  /*document.onselectstart = function() {
+  function mn(target) {
+    let selObj = document.getSelection();
+    console.log(`selObj from ${target}=`, selObj.toString());
+  }
+
+  document.onselectstart = function() {
     console.log('Selection started!');
-  };*/
+    // mn('start');
+  };
+
+  document.onselectionchange = function() {
+    console.log('Selection change!'); //изменяется на каждый символ
+    mn('change');
+  };
 
   // import json from '/json/mainText.json'
   // import json2 from '/json/mainCheckboxes.json'
@@ -31,12 +55,12 @@
   //получить данные из json
   // let mainText = require('@/json/mainText.json');
   /*let mainCheckboxes = fetch('https://api.github.com/users/chriscoyier/repos')
-     .then(response => response.json())
-     .then(data => {
-     console.log('data=', data);
-     }
-     );
-     console.log('mainCheckboxes=', mainCheckboxes);*/
+   .then(response => response.json())
+   .then(data => {
+   console.log('data=', data);
+   }
+   );
+   console.log('mainCheckboxes=', mainCheckboxes);*/
 
   let mainText =
     'При транскрибировании терминов корейской топонимики односложные ' +
@@ -55,19 +79,18 @@
 
   let mainCheckboxes = [
     {
-      "id": 0,
-      "label": "text"
+      id: 0,
+      label: 'text'
     },
     {
-      "id": 1,
-      "label": "masha"
+      id: 1,
+      label: 'masha'
     },
     {
-      "id": 2,
-      "label": "vue"
-    }];
-
-
+      id: 2,
+      label: 'vue'
+    }
+  ];
 
   export default {
     name: 'MarkedEntities',
@@ -76,39 +99,47 @@
         mainText: mainText,
         mainCheckboxes: mainCheckboxes,
         mainResult: '',
+        //область выделения
+        selection: ''
         // publicPath: process.env.BASE_URL
       };
     },
     computed: {
       /*mainResult: function() {
-        return this.mainText.startsWith('П'); //true
-      }*/
+       return this.mainText.startsWith('П'); //true
+       }*/
     },
     watch: {
       //тут следить за текстом и его выделением?
-      mainText: function() {}
+      mainText: function() {
+      }
     },
     created() {
       //получить данные из json
       /*fetch('https://api.github.com/users/chriscoyier/repos')
-        .then(response => {
-          this.mainResult = response.data;
-          console.log(this.mainResult);
-      });*/
+       .then(response => {
+       this.mainResult = response.data;
+       console.log(this.mainResult);
+       });*/
     },
     mounted() {
+      /*onSelect() {
+       return document.onselectionchange;
+       }*/
     },
     updated() {
-      this.selection();
     },
     methods: {
       //тут следить за текстом и его выделением?
-      selection: function() {
-        let self = this;
-        let selObj = window.getSelection();
-        console.log('methods selObj=', selObj);
+      initSelection() {
+        // let self = this;
+        this.selection = document.getSelection();
+        console.log('methods this.selection=', this.selection.toString());
+      },
+      addToSelectionResult() {
+        console.log('masha');
       }
-    },
+    }
   };
 </script>
 
