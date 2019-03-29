@@ -1,7 +1,7 @@
 <template>
   <div data-id="app">
-    <!--<MarkedEntities />-->
     <Test/>
+    <MarkedEntities />
   </div>
 </template>
 
@@ -12,7 +12,7 @@
   export default {
     name: 'app',
     components: {
-      // MarkedEntities,
+      MarkedEntities,
       Test
     }
   };

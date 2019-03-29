@@ -1,10 +1,10 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <div class="main__text"
-           v-bind:data-name="initSelection"
-      >
-        {{ mainText }}</div>
+      <div class="main__text" v-bind:data-name="initSelection">
+        {{ initSelection() }}
+        {{ mainText }}
+      </div>
 
       <div class="main__checkboxes">
         <ul class="checkboxes-list">
@@ -13,21 +13,20 @@
             v-for="checkbox in mainCheckboxes"
             v-bind:key="checkbox.id"
           >
-            <input type="checkbox"
-                   v-bind:name="checkbox.label"
-                   v-bind:id="'ch' + checkbox.id"/>
-            <label class="checkboxes-list__label"
-                   v-bind:for="'ch' + checkbox.id"
+            <input
+              type="checkbox"
+              v-bind:name="checkbox.label"
+              v-bind:id="'ch' + checkbox.id"
+            />
+            <label class="checkboxes-list__label" v-bind:for="'ch' + checkbox.id">
+              {{ checkbox.label }}</label
             >
-              {{ checkbox.label }}</label>
           </li>
         </ul>
       </div>
     </div>
 
-    <button class="btn"
-            v-on:click="addToSelectionResult"
-    >Добавить в selection</button>
+    <button class="btn" v-on:click="addToSelectionResult">Добавить в selection</button>
 
     <div class="result">{{ mainResult }}</div>
   </div>
@@ -44,6 +43,7 @@
     // mn('start');
   };
 
+  // не фаерится внутри вью
   document.onselectionchange = function() {
     console.log('Selection change!'); //изменяется на каждый символ
     mn('change');
@@ -100,7 +100,9 @@
         mainCheckboxes: mainCheckboxes,
         mainResult: '',
         //область выделения
-        selection: ''
+        selection: '',
+        sel: '',
+        array: []
         // publicPath: process.env.BASE_URL
       };
     },
@@ -133,12 +135,17 @@
     methods: {
       //тут следить за текстом и его выделением?
       initSelection() {
+        console.log('Selection инициировался');
         // let self = this;
         this.selection = document.getSelection();
-        console.log('methods this.selection=', this.selection.toString());
+        this.sel = this.selection.toString();
+        console.log('methods this.sel=', this.sel);
       },
       addToSelectionResult() {
-        console.log('masha');
+        console.log('masha=', this.sel);
+        this.array.push(this.sel);
+        // this.sel = '';
+        console.log('this.array=', this.array);
       }
     }
   };
