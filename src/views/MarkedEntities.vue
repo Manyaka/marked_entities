@@ -19,6 +19,12 @@
 </template>
 
 <script>
+  // let selObj = window.getSelection();
+  // console.log('selObj=', selObj);
+  /*document.onselectstart = function() {
+    console.log('Selection started!');
+  };*/
+
   // import json from '/json/mainText.json'
   // import json2 from '/json/mainCheckboxes.json'
 
@@ -45,6 +51,8 @@
     'односложными названиями они всегда передаются в транскрипции: 동면 — волость ' +
     'Тонмён, 북구 — район Пукку.[2]';
 
+  let mainText2 = 'Masha';
+
   let mainCheckboxes = [
     {
       "id": 0,
@@ -59,26 +67,48 @@
       "label": "vue"
     }];
 
+
+
   export default {
     name: 'MarkedEntities',
     data() {
       return {
         mainText: mainText,
         mainCheckboxes: mainCheckboxes,
-        mainResult: ''
+        mainResult: '',
         // publicPath: process.env.BASE_URL
       };
     },
-    computed: {},
-    methods: {},
+    computed: {
+      /*mainResult: function() {
+        return this.mainText.startsWith('П'); //true
+      }*/
+    },
+    watch: {
+      //тут следить за текстом и его выделением?
+      mainText: function() {}
+    },
     created() {
       //получить данные из json
-      /*axios.get('https://www.cryptocompare.com/api/data/coinlist/')
+      /*fetch('https://api.github.com/users/chriscoyier/repos')
         .then(response => {
           this.mainResult = response.data;
           console.log(this.mainResult);
       });*/
-    }
+    },
+    mounted() {
+    },
+    updated() {
+      this.selection();
+    },
+    methods: {
+      //тут следить за текстом и его выделением?
+      selection: function() {
+        let self = this;
+        let selObj = window.getSelection();
+        console.log('methods selObj=', selObj);
+      }
+    },
   };
 </script>
 
