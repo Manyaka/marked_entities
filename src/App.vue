@@ -1,16 +1,19 @@
 <template>
   <div data-id="app">
-    <MarkedEntities />
+    <!--<MarkedEntities />-->
+    <Test/>
   </div>
 </template>
 
 <script>
   import MarkedEntities from './views/MarkedEntities.vue';
+  import Test from './components/Test.vue';
 
   export default {
     name: 'app',
     components: {
-      MarkedEntities
+      // MarkedEntities,
+      Test
     }
   };
 </script>

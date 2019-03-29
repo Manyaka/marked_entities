@@ -2,7 +2,7 @@
   <div class="main__wrapper">
     <div class="main">
       <div class="main__text"
-           v-bind="initSelection"
+           v-bind:data-name="initSelection"
       >
         {{ mainText }}</div>
 
@@ -123,6 +123,7 @@
        });*/
     },
     mounted() {
+      window.mn = this;
       /*onSelect() {
        return document.onselectionchange;
        }*/
