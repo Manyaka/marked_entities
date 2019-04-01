@@ -1,37 +1,60 @@
 document.addEventListener('DOMContentLoaded', function(event) {
+
+  //--------------------------------------------
   let button = document.querySelector('[data-selector="btn-add"]');
   let textDiv = document.querySelector('[data-selector="text-div"]');
   let resultDiv = document.querySelector('[data-selector="result-div"]');
-  let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
-  let checkbox = document.querySelector('[data-selector="checkbox"]');
   let resultArray = [];
   let selection;
-  let arrLi = Array.from(checkboxList.children);
-
   document.onselectionchange = function() {
-    //TODO селекшн должен считываться только в блоке текста - containsNode()
-    //console.log(document.getSelection().containsNode(document.textDiv, true));
-    selection = document.getSelection();
+    //селекшн должен считываться только в блоке текста - containsNode()
+    if (document.getSelection().containsNode(textDiv, true)) {
+      selection = document.getSelection();
+    }
   };
 
   button.addEventListener('click', function() {
+    //TODO предупреждать, что выделен текст не в том месте, или просто деражть кнопку
+    // дисайблед
     resultArray.push(selection.toString());
     resultDiv.textContent = resultArray;
   });
+  //--------------------------------------------
 
-  checkboxList.addEventListener('change', function() {
-    //TODO предупреждать, когда нет выделения
-    arrLi.forEach(function(element) {
-      let li = Array.from(element.children);
-      mn(li, selection);
-    });
+  //--------------------------------------------
+  let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
+  let arrLi = Array.from(checkboxList.children);
+  let checkboxes = document.querySelectorAll('[data-selector="checkbox"]');
+  console.log('checkboxes=', checkboxes, '***', typeof checkboxes);
+  let arrCheckboxes = Array.from(checkboxes);
+  console.log('arrCheckboxes=', arrCheckboxes, '***', typeof arrCheckboxes);
+
+  checkboxes.addEventListener('change', function(event) {
+    console.log('event=', event.target); //input
+    console.log('event=', event.currentTarget); //ul
+    event.preventDefault();
+    //предупреждать, когда нет выделения
+    if (!selection) {
+      window.alert('Сначала выделите текст');
+    } else {
+      console.log('else');
+      arrLi.forEach(function(element) {
+        let li = Array.from(element.children);
+        tn(li, selection);
+      });
+    }
   });
 });
+
+//ставим mark вкруг выделенного текста
+function tn(element, selection) {
+  console.log(selection);
+}
 
 //проверяем чекбокс на соответствие текста лейбла и выделенного, и чекаем
 function mn(element, selection) {
   let sel;
-  console.log('mn=', element, '**', typeof element);//object
+  console.log('mn=', element, '**', typeof element); //object
 
   if (selection) {
     sel = selection.toString();
@@ -56,24 +79,24 @@ function mn(element, selection) {
   /*element.forEach(function(element, i) {
 
    if (element.tagName === 'LABEL') {
-    }
+   }
 
-    if (labelText === sel) {
-      console.log('чекать можно');
-      if (element.tagName === 'INPUT') {
-        element.setAttribute('checked', 'checked');
-      }
-    } else {
-      console.log('чекать нельзя');
-      if (element.tagName === 'INPUT') {
-        element.removeAttribute('checked');
-      }
-    }
-  });*/
+   if (labelText === sel) {
+   console.log('чекать можно');
+   if (element.tagName === 'INPUT') {
+   element.setAttribute('checked', 'checked');
+   }
+   } else {
+   console.log('чекать нельзя');
+   if (element.tagName === 'INPUT') {
+   element.removeAttribute('checked');
+   }
+   }
+   });*/
 
   /*if (elements.tagName === 'INPUT') {
-     // mn(elements);
-     }*/
+   // mn(elements);
+   }*/
 
   /*if (input.checked) {
    console.log('Checkbox is checked');
