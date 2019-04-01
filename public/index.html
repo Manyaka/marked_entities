@@ -35,18 +35,26 @@
     </div>
 
     <div class="main__checkboxes">
-      <ul class="checkboxes-list">
+      <ul class="checkboxes-list" data-selector="checkbox-list">
         <li class="checkboxes-list__item">
-          <input type="checkbox">
-          <label class="checkboxes-list__label"></label>
+          <input type="checkbox" data-selector="checkbox" id="id1">
+          <label class="checkboxes-list__label" for="id1">Пукку</label>
+        </li>
+        <li class="checkboxes-list__item">
+          <input type="checkbox" data-selector="checkbox" id="id2">
+          <label class="checkboxes-list__label" for="id2">Суён</label>
+        </li>
+        <li class="checkboxes-list__item">
+          <input type="checkbox" data-selector="checkbox" id="id3">
+          <label class="checkboxes-list__label" for="id3">Пхёнандо</label>
         </li>
       </ul>
     </div>
   </div>
 
-  <button class="btn">Добавить в selection</button>
+  <button class="btn" data-selector="btn-add">Добавить в selection</button>
 
-  <div class="result"></div>
+  <div class="result" data-selector="result-div"></div>
 </div>
 <script src="js/script.js"></script>
 </body>
