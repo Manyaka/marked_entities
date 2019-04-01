@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
   let button = document.querySelector('[data-selector="btn-add"]');
+  let textDiv = document.querySelector('[data-selector="text-div"]');
   let resultDiv = document.querySelector('[data-selector="result-div"]');
   let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
   let checkbox = document.querySelector('[data-selector="checkbox"]');
@@ -8,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
   let arrLi = Array.from(checkboxList.children);
 
   document.onselectionchange = function() {
+    //TODO селекшн должен считываться только в блоке текста - containsNode()
+    //console.log(document.getSelection().containsNode(document.textDiv, true));
     selection = document.getSelection();
   };
 
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   });
 
   checkboxList.addEventListener('change', function() {
+    //TODO предупреждать, когда нет выделения
     arrLi.forEach(function(element) {
       let li = Array.from(element.children);
       mn(li, selection);
@@ -25,21 +29,33 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 //проверяем чекбокс на соответствие текста лейбла и выделенного, и чекаем
-function mn(elements, selection) {
+function mn(element, selection) {
   let sel;
-  console.log('mn=', elements);
+  console.log('mn=', element, '**', typeof element);//object
 
   if (selection) {
     sel = selection.toString();
     console.log('sel=', sel);
   }
+  //element[0] - label
+  let labelText = element[0].textContent.trim();
+  console.log('labelText=', labelText);
 
-  elements.forEach(function(element, i) {
-    let labelText;
+  let input = element[0].children[0];
 
-    if (element.tagName === 'LABEL') {
-      labelText = element.textContent;
-      console.log('labelText=', labelText);
+  if (labelText === sel) {
+    console.log('чекать можно');
+    input.setAttribute('checked', true);
+    console.log('input', input);
+  } else {
+    console.log('чекать нельзя');
+    input.removeAttribute('checked');
+    console.log('input', input);
+  }
+
+  /*element.forEach(function(element, i) {
+
+   if (element.tagName === 'LABEL') {
     }
 
     if (labelText === sel) {
@@ -53,11 +69,11 @@ function mn(elements, selection) {
         element.removeAttribute('checked');
       }
     }
-  });
+  });*/
 
-  if (elements.tagName === 'INPUT') {
-    // mn(elements);
-  }
+  /*if (elements.tagName === 'INPUT') {
+     // mn(elements);
+     }*/
 
   /*if (input.checked) {
    console.log('Checkbox is checked');

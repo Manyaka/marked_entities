@@ -21,7 +21,7 @@
 <!-- built files will be auto injected -->
 <div class="main__wrapper">
   <div class="main">
-    <div class="main__text">
+    <div class="main__text" data-selector="text-div">
       При транскрибировании терминов корейской топонимики односложные номенклатурные
       термины, за некоторыми исключениями, сохраняются в транскрипции. Они пишутся слитно
       с собственным названием и повторяются также в переводе; например: 한강 — река Ханган,
@@ -37,16 +37,22 @@
     <div class="main__checkboxes">
       <ul class="checkboxes-list" data-selector="checkbox-list">
         <li class="checkboxes-list__item">
-          <input type="checkbox" data-selector="checkbox" id="id1">
-          <label class="checkboxes-list__label" for="id1">Пукку</label>
+          <label class="checkboxes-list__label" for="id1" data-class="class1">
+            <input type="checkbox" data-selector="checkbox" id="id1">
+            География
+          </label>
         </li>
         <li class="checkboxes-list__item">
-          <input type="checkbox" data-selector="checkbox" id="id2">
-          <label class="checkboxes-list__label" for="id2">Суён</label>
+          <label class="checkboxes-list__label" for="id2" data-class="class2">
+            <input type="checkbox" data-selector="checkbox" id="id2">
+            Иероглифы
+          </label>
         </li>
         <li class="checkboxes-list__item">
-          <input type="checkbox" data-selector="checkbox" id="id3">
-          <label class="checkboxes-list__label" for="id3">Пхёнандо</label>
+          <label class="checkboxes-list__label" for="id3" data-class="class3">
+            <input type="checkbox" data-selector="checkbox" id="id3">
+            География и иероглифы
+          </label>
         </li>
       </ul>
     </div>
