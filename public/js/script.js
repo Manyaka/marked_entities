@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   //--------------------------------------------
 
   //--------------------------------------------
-  //selection тоже используется в этом блоке
+  //selection, textDiv тоже используется в этом блоке
   let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
   let arrLi = Array.from(checkboxList.children);
 
@@ -30,14 +30,30 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   // let arrCheckboxes = Array.from(checkboxes);
   // console.log('arrCheckboxes=', arrCheckboxes, '***', typeof arrCheckboxes);
+  let range;
+  let markNode = document.createElement("mark");
+  let textDivInnerHtml = textDiv.innerHTML;
+  // console.log('textDivInnerHtml=', textDivInnerHtml);
 
   checkboxes.forEach((input) => {
     input.addEventListener('change', (event) => {
-      if (!selection) {
+      console.log('selection.isCollapsed=', selection.isCollapsed);
+      if (!selection || selection.isCollapsed) {
         event.target.checked = false;
         window.alert('Сначала выделите текст');
       } else {
-        console.log('else');
+        // console.log('else=', selection.toString());
+        // console.log('else=', selection.anchorNode);
+        // console.log('else=', selection.anchorOffset);
+        // console.log('else=', selection.focusNode);
+        // console.log('else=', selection.focusOffset);
+        // console.log('else=', selection);
+        range = selection.getRangeAt(0);
+        console.log('range=', range);
+        //поставить марку
+        range.surroundContents(markNode); //работает, только марк ставится 1 раз и
+        // чекбокс
+        //чекается сразу
       }
     });
   });
