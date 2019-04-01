@@ -30,6 +30,9 @@
         console.log(newValue);
       }
     },
+    mounted() {
+      this.$watch('age', () => console.log('age=', this.age));
+    },
     methods: {}
   };
 </script>
