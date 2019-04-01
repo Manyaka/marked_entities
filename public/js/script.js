@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(event) {
-
   //--------------------------------------------
   let button = document.querySelector('[data-selector="btn-add"]');
   let textDiv = document.querySelector('[data-selector="text-div"]');
@@ -22,28 +21,51 @@ document.addEventListener('DOMContentLoaded', function(event) {
   //--------------------------------------------
 
   //--------------------------------------------
+  //selection тоже используется в этом блоке
   let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
   let arrLi = Array.from(checkboxList.children);
-  let checkboxes = document.querySelectorAll('[data-selector="checkbox"]');
-  console.log('checkboxes=', checkboxes, '***', typeof checkboxes);
-  let arrCheckboxes = Array.from(checkboxes);
-  console.log('arrCheckboxes=', arrCheckboxes, '***', typeof arrCheckboxes);
 
-  checkboxes.addEventListener('change', function(event) {
-    console.log('event=', event.target); //input
-    console.log('event=', event.currentTarget); //ul
-    event.preventDefault();
-    //предупреждать, когда нет выделения
-    if (!selection) {
-      window.alert('Сначала выделите текст');
-    } else {
-      console.log('else');
-      arrLi.forEach(function(element) {
-        let li = Array.from(element.children);
-        tn(li, selection);
-      });
-    }
+  let checkboxes = document.querySelectorAll('[data-selector="checkbox"]');
+  // console.log('checkboxes=', checkboxes, '***', typeof checkboxes);
+
+  // let arrCheckboxes = Array.from(checkboxes);
+  // console.log('arrCheckboxes=', arrCheckboxes, '***', typeof arrCheckboxes);
+
+  checkboxes.forEach((input) => {
+    input.addEventListener('change', (event) => {
+      if (!selection) {
+        event.target.checked = false;
+        window.alert('Сначала выделите текст');
+      } else {
+        console.log('else');
+      }
+    });
   });
+
+  /*checkboxes.forEach(function(element) {
+   console.log('element=', element);
+   element.addEventListener('change', function(event) {
+   console.log('event=', event);
+   // event.preventDefault();
+   // event.stopImmediatePropagation();
+   event.stopPropagation();
+   })
+   });*/
+
+  /*checkboxList.addEventListener('change', function(event) {
+   console.log('event.target=', event.target); //input
+   console.log('event.currentTarget=', event.currentTarget); //ul
+   //предупреждать, когда нет выделения
+   if (!selection) {
+   // window.alert('Сначала выделите текст');
+   } else {
+   // console.log('else');
+   /!*arrLi.forEach(function(element) {
+   let li = Array.from(element.children);
+   tn(li, selection);
+   });*!/
+   }
+   });*/
 });
 
 //ставим mark вкруг выделенного текста
