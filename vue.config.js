@@ -1,7 +1,7 @@
 module.exports = {
   css: {
     modules: true,
-    sourceMap: true
+    sourceMap: true,
   },
-  productionSourceMap: false
+  productionSourceMap: false,
 };

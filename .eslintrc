@@ -1,15 +1,19 @@
 {
   "root": true,
   "env": {
-    "node": true,
-    "browser": true
+    "browser": true,
+    "node": true
   },
-  "extends": [
-    "plugin:vue/essential"
-  ],
+  "extends": ["plugin:vue/essential"],
   "rules": {
     "no-console": "off",
-    "no-debugger": "off"
+    "no-debugger": "off",
+    "indent": ["off", 2],
+    "arrow-parens": ["error", "always"],
+    "comma-dangle": ["error", "only-multiline"],
+    "spaced-comment": "off",
+    "prefer-const": "off",
+    "template-curly-spacing": "off"
   },
   "parserOptions": {
     "parser": "babel-eslint"
