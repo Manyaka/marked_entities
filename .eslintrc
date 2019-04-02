@@ -4,16 +4,53 @@
     "browser": true,
     "node": true
   },
-  "extends": ["plugin:vue/essential"],
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:vue/strongly-recommended"
+    //"plugin:vue/recommended"
+  ],
   "rules": {
+    // override default options for rules from base configurations
+    "arrow-parens": ["warn", "always"],
+    "comma-dangle": ["warn", "only-multiline"],
+    // disable rules from base configurations
+    "indent": ["off", 2],
     "no-console": "off",
     "no-debugger": "off",
-    "indent": ["off", 2],
-    "arrow-parens": ["error", "always"],
-    "comma-dangle": ["error", "only-multiline"],
-    "spaced-comment": "off",
     "prefer-const": "off",
-    "template-curly-spacing": "off"
+    "spaced-comment": "off",
+    "template-curly-spacing": "off",
+    //vue
+    "vue/html-self-closing": [
+      "warn",
+      {
+        "html": {
+          "void": "never",
+          "normal": "any",
+          "component": "always"
+        }
+      }
+    ],
+    "vue/v-bind-style": "longform",
+    "vue/v-on-style": "longform",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/max-attributes-per-line": [
+      "warn",
+      {
+        "singleline": 3,
+        "multiline": {
+          "max": 3,
+          "allowFirstLine": true
+        }
+      }
+    ],
+    "vue/html-closing-bracket-newline": [
+      "warn",
+      {
+        "singleline": "never",
+        "multiline": "never"
+      }
+    ]
   },
   "parserOptions": {
     "parser": "babel-eslint"

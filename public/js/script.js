@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   };
 
   button.addEventListener('click', function() {
-    //TODO предупреждать, что выделен текст не в том месте, или просто деражть кнопку
+    //TODO предупреждать, что выделен текст не в том месте, или просто держать кнопку
     // дисайблед
     resultArray.push(selection.toString());
     resultDiv.textContent = resultArray;

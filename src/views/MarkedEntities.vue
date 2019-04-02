@@ -8,19 +8,15 @@
 
       <div class="main__checkboxes">
         <ul class="checkboxes-list">
-          <li
-            class="checkboxes-list__item"
-            v-for="checkbox in mainCheckboxes"
-            v-bind:key="checkbox.id"
-          >
-            <input
-              type="checkbox"
-              v-bind:name="checkbox.label"
-              v-bind:id="'ch' + checkbox.id"
-            />
+          <li class="checkboxes-list__item"
+              v-for="checkbox in mainCheckboxes"
+              v-bind:key="checkbox.id">
+            <input type="checkbox"
+                   v-bind:name="checkbox.label"
+                   v-bind:id="'ch' + checkbox.id">
             <label class="checkboxes-list__label" v-bind:for="'ch' + checkbox.id">
-              {{ checkbox.label }}</label
-            >
+              {{ checkbox.label }}
+            </label>
           </li>
         </ul>
       </div>
@@ -80,16 +76,16 @@
   let mainCheckboxes = [
     {
       id: 0,
-      label: 'text'
+      label: 'text',
     },
     {
       id: 1,
-      label: 'masha'
+      label: 'masha',
     },
     {
       id: 2,
-      label: 'vue'
-    }
+      label: 'vue',
+    },
   ];
 
   export default {
@@ -102,7 +98,7 @@
         //область выделения
         selection: '',
         sel: '',
-        array: []
+        array: [],
         // publicPath: process.env.BASE_URL
       };
     },
@@ -114,7 +110,7 @@
     watch: {
       //тут следить за текстом и его выделением?
       mainText: function() {
-      }
+      },
     },
     created() {
       //получить данные из json
@@ -146,8 +142,8 @@
         this.array.push(this.sel);
         // this.sel = '';
         console.log('this.array=', this.array);
-      }
-    }
+      },
+    },
   };
 </script>
 

@@ -1,9 +1,9 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <input type="text" v-model="user.firstName"/>
-      <input type="text" v-model="user.lastName"/>
-      <input type="number" v-model="user.age"/>
+      <input type="text" v-model="user.firstName">
+      <input type="text" v-model="user.lastName">
+      <input type="number" v-model="user.age">
       {{ demo }}
       <!--{{ fullName }}-->
       <button class="btn" v-on:click="addField()">Button</button>
@@ -19,8 +19,8 @@
         user: {
           firstName: 'Маша',
           lastName: 'Нагорных',
-          age: 37
-        }
+          age: 37,
+        },
       };
     },
     computed: { //vuex подписывается на computed
@@ -32,13 +32,15 @@
         if (this.user) {
           // console.log('start');
           return '11111';
+        } else {
+          return '7777';
         }
-      }
+      },
     },
     watch: {
       firstName(newValue) {
         // console.log(newValue);
-      }
+      },
     },
     mounted() {
       // console.log(Object.keys(this)); //то что без доллара и без подчёркивания
@@ -56,9 +58,7 @@
       addField() {
         // console.log('1');
         this.user.newField = 13; //не рактивно
-      }
-    }
+      },
+    },
   };
 </script>
-
-<style scoped></style>
