@@ -1,67 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="Content-language" content="ru"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>marked_entities</title>
-  <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-language" content="ru" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>marked_entities</title>
 
-  <!--джейсоны с данными-->
-  <!--<script src="<%= BASE_URL %>json/mainCheckboxes.json"></script>-->
-  <!--<script src="<%= BASE_URL %>json/mainText.json"></script>-->
-</head>
+    <!--джейсоны с данными-->
+    <!--<script src="<%= BASE_URL %>json/mainCheckboxes.json"></script>-->
+    <!--<script src="<%= BASE_URL %>json/mainText.json"></script>-->
+  </head>
 
-<body>
-<noscript>
-  <strong>We're sorry but marked_entities doesn't work properly without JavaScript
-    enabled. Please enable it to continue.</strong>
-</noscript>
-<!--<div data-id="app"></div>-->
-<!-- built files will be auto injected -->
-<div class="main__wrapper">
-  <div class="main">
-    <div class="main__text" data-selector="text-div">
-      При транскрибировании терминов корейской топонимики односложные номенклатурные
-      термины, за некоторыми исключениями, сохраняются в транскрипции. Они пишутся слитно
-      с собственным названием и повторяются также в переводе; например: 한강 — река Ханган,
-      백두산 — гора Пэктусан, 제주도 остров Чеджудо, 평안도 — провинция Пхёнандо, 광안동 — квартал
-      Кванандон, 연화리 — деревня Йонхвари и т. д. Исключение составляют односложные
-      номенклатурные термины, обозначающие город (시), уезд (군), район города (구), уездный
-      город или административный центр уезда (읍), волость (면): 김해시 — город Кимхэ, 평창군 —
-      уезд Пхёнчхан, 수영구 — район Суён, 흥해읍 — уездный город Хынхэ, 철마면 — волость Чхольма.
-      Однако в сочетании с односложными названиями они всегда передаются в транскрипции:
-      동면 — волость Тонмён, 북구 — район Пукку.[2]
-    </div>
-
-    <div class="main__checkboxes">
-      <ul class="checkboxes-list" data-selector="checkbox-list">
-        <li class="checkboxes-list__item">
-          <label class="checkboxes-list__label" for="id1" data-class="class1">
-            <input type="checkbox" data-selector="checkbox" id="id1">
-            География
-          </label>
-        </li>
-        <li class="checkboxes-list__item">
-          <label class="checkboxes-list__label" for="id2" data-class="class2">
-            <input type="checkbox" data-selector="checkbox" id="id2">
-            Иероглифы
-          </label>
-        </li>
-        <li class="checkboxes-list__item">
-          <label class="checkboxes-list__label" for="id3" data-class="class3">
-            <input type="checkbox" data-selector="checkbox" id="id3">
-            География и иероглифы
-          </label>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <button class="btn" data-selector="btn-add">Добавить в selection</button>
-
-  <div class="result" data-selector="result-div"></div>
-</div>
-<script src="js/script.js"></script>
-</body>
+  <body>
+    <noscript>
+      <strong>We're sorry but marked_entities doesn't work properly without
+        JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div data-id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
