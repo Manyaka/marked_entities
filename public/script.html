@@ -5,13 +5,12 @@
     <meta http-equiv="Content-language" content="ru" />
     <title>script</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdn.jsdelivr.net/mark.js/8.6.0/mark.min.js"></script>
   </head>
 
   <body>
     <div class="main__wrapper">
       <div class="main">
-        <div class="main__text" data-selector="text-div" contenteditable="true">
+        <div class="main__text" data-selector="text-div">
           При транскрибировании терминов корейской топонимики односложные номенклатурные
           термины, за некоторыми исключениями, сохраняются в транскрипции. Они пишутся
           слитно с собственным названием и повторяются также в переводе; например: 한강 —
@@ -28,15 +27,23 @@
         <div class="main__checkboxes">
           <ul class="checkboxes-list" data-selector="checkbox-list">
             <li class="checkboxes-list__item">
-              <button data-selector="buttons" data-class="class1">
-                География</button>
+              <button data-selector="buttons"
+                      data-color="#fa8072808"
+                      data-name="geography">
+                География
+              </button>
             </li>
             <li class="checkboxes-list__item">
-              <button data-selector="buttons" data-class="class2">
-                Иероглифы</button>
+              <button data-selector="buttons"
+                      data-color="#9acd3280"
+                      data-name="hieroglyphs">
+                Иероглифы
+              </button>
             </li>
             <li class="checkboxes-list__item">
-              <button data-selector="buttons" data-class="class3">
+              <button data-selector="buttons"
+                      data-color="#ffd70080"
+                      data-name="geography and hieroglyphs">
                 География и иероглифы
               </button>
             </li>

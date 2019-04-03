@@ -2,12 +2,16 @@ body {
   font: 18px/1.3 'Avenir', Helvetica, Arial, sans-serif;
 }
 
-mark {
-  background-color: yellowgreen;
+.mark-red {
+  background-color: salmon; /*rgba #fa8072808*/
 }
 
-.red {
-  background: #FA8072;
+.mark-green {
+  background-color: yellowgreen; /*rgba #9acd3280*/
+}
+
+.mark-yellow {
+  background-color: gold; /*rgba #ffd70080*/
 }
 
 .main {
