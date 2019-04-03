@@ -3,7 +3,11 @@ body {
 }
 
 mark {
-  background-color: yellow;
+  background-color: yellowgreen;
+}
+
+.red {
+  background: #FA8072;
 }
 
 .main {

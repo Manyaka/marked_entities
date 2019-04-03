@@ -25,23 +25,44 @@ document.addEventListener('DOMContentLoaded', function(event) {
   let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
   let arrLi = Array.from(checkboxList.children);
 
-  let range;
+  let range, clone;
   let markNode = document.createElement('mark');
+  let spanNode = document.createElement('span');
   let textDivInnerHtml = textDiv.innerHTML;
 
   let buttons = document.querySelectorAll('[data-selector="buttons"]');
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (!selection || selection.isCollapsed) {
+      // highlight('', '');
+     /* if (!selection || selection.isCollapsed) {
         window.alert('Сначала выделите текст');
       } else {
         range = selection.getRangeAt(0);
-        range.surroundContents(markNode);
-      }
+        range.surroundContents(spanNode);
+      }*/
     });
   });
 });
+
+function tn() {
+  if (!selection || selection.isCollapsed) {
+    window.alert('Сначала выделите текст');
+  } else {
+    // debugger;
+    // console.log('selectionStart=', selection);
+    // console.log('selection=', selection.toString());
+    range = selection.getRangeAt(0);
+    // console.log('rangeStart=', range);
+    // clone = range.cloneRange();
+    range.surroundContents(markNode);
+    // console.log('rangeAfterNode', range);
+    // selection.removeAllRanges();
+    // console.log('selectionMiddle=', selection);
+    // selection.addRange(clone);
+    // console.log('selectionEnd=', selection);
+  }
+}
 
 //проверяем чекбокс на соответствие текста лейбла и выделенного, и чекаем
 function mn(element, selection) {
@@ -98,36 +119,33 @@ function mn(element, selection) {
   console.log('-------------');
 }
 
-var onClick = function() {
-  highlight('', 'red');
-};
-
-var selectionRange;
+let selectionRange;
 
 function highlight(highlightID, color) {
   if (window.getSelection && window.getSelection().toString()) {
-    var node = getSelectionParentElement();
+    let node = getSelectionParentElement(); //зачем получаем парента? Без него не работает
     if (node != null) {
-      var text = getSelectionText();
+      let text = getSelectionText();
       console.log('Selected text: ' + text);
       markFunc(node, text, /*HIGHLIGHT_CLASS + " " + */ color);
     } else {
-      console.log('Parent nde is null for some reason');
+      console.log('Parent node is null for some reason');
     }
   } else {
-    console.log('tapped without selection');
+    window.alert('Сначала выделите текст');
+    // console.log('tapped without selection');
   }
 }
 
 function getSelectionText() {
   if (window.getSelection) {
-    var sel = window.getSelection();
+    let sel = window.getSelection();
     return sel.toString();
   }
 }
 
 function getSelectionParentElement() {
-  var parentEl = null,
+  let parentEl = null,
     sel;
   if (window.getSelection) {
     sel = window.getSelection();
@@ -145,25 +163,21 @@ function getSelectionParentElement() {
 }
 
 function markFunc(node, text, color) {
-  var instance = new Mark(node);
+  let instance = new Mark(node);
+
   instance.mark(text, {
-    element: 'span',
+    element: 'mark',
     className: color,
-    acrossElements: true,
     separateWordSearch: false,
     accuracy: 'partially',
     diacritics: true,
+    acrossElements: true,
     ignoreJoiners: true,
     each: function(element) {
-      element.setAttribute('id', 'sohayb');
-      element.setAttribute('title', 'sohayb_title');
+      element.setAttribute('class', 'mn');
     },
-    done: function(totalMarks) {
-      window.getSelection().empty(); //This only in Chrome
-      console.log('total marks: ' + totalMarks);
-    },
-    filter: function(node, term, totalCounter, counter) {
-      var res = false;
+    /*filter: function(node, term, totalCounter, counter) {
+      let res = false;
       if (counter === 0) {
         res = selectionRange.isPointInRange(node, selectionRange.startOffset);
       } else {
@@ -171,6 +185,11 @@ function markFunc(node, text, color) {
       }
       console.log('Counter: ' + counter + ', startOffset: ' + selectionRange.startOffset);
       return res;
-    },
+    },*/
+    done: function(totalMarks) {
+          window.getSelection().empty(); //This only in Chrome
+          console.log('total marks: ' + totalMarks);
+        },
+    debug: true
   });
 }
