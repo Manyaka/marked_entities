@@ -25,33 +25,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
   let checkboxList = document.querySelector('[data-selector="checkbox-list"]');
   let arrLi = Array.from(checkboxList.children);
 
-  let checkboxes = document.querySelectorAll('[data-selector="checkbox"]');
   let range;
-  let markNode = document.createElement("mark");
+  let markNode = document.createElement('mark');
   let textDivInnerHtml = textDiv.innerHTML;
 
-  checkboxes.forEach((input) => {
-    input.addEventListener('change', (event) => {
-      console.log('selection.isCollapsed=', selection.isCollapsed);
+  let buttons = document.querySelectorAll('[data-selector="buttons"]');
 
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
       if (!selection || selection.isCollapsed) {
-        event.target.checked = false;
         window.alert('Сначала выделите текст');
       } else {
         range = selection.getRangeAt(0);
-        console.log('range=', range);
-        //поставить марку
-        //работает, только марк ставится 1 раз и чекбокс чекается сразу
         range.surroundContents(markNode);
       }
     });
   });
 });
-
-//ставим mark вкруг выделенного текста
-function tn(element, selection) {
-  console.log(selection);
-}
 
 //проверяем чекбокс на соответствие текста лейбла и выделенного, и чекаем
 function mn(element, selection) {
@@ -106,4 +96,81 @@ function mn(element, selection) {
    console.log('Checkbox is not checked');
    }*/
   console.log('-------------');
+}
+
+var onClick = function() {
+  highlight('', 'red');
+};
+
+var selectionRange;
+
+function highlight(highlightID, color) {
+  if (window.getSelection && window.getSelection().toString()) {
+    var node = getSelectionParentElement();
+    if (node != null) {
+      var text = getSelectionText();
+      console.log('Selected text: ' + text);
+      markFunc(node, text, /*HIGHLIGHT_CLASS + " " + */ color);
+    } else {
+      console.log('Parent nde is null for some reason');
+    }
+  } else {
+    console.log('tapped without selection');
+  }
+}
+
+function getSelectionText() {
+  if (window.getSelection) {
+    var sel = window.getSelection();
+    return sel.toString();
+  }
+}
+
+function getSelectionParentElement() {
+  var parentEl = null,
+    sel;
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.rangeCount) {
+      selectionRange = sel.getRangeAt(0);
+      parentEl = selectionRange.commonAncestorContainer;
+      if (parentEl.nodeType !== 1) {
+        parentEl = parentEl.parentNode;
+      }
+    }
+  } else if ((sel = document.selection) && sel.type !== 'Control') {
+    parentEl = sel.createRange().parentElement();
+  }
+  return parentEl;
+}
+
+function markFunc(node, text, color) {
+  var instance = new Mark(node);
+  instance.mark(text, {
+    element: 'span',
+    className: color,
+    acrossElements: true,
+    separateWordSearch: false,
+    accuracy: 'partially',
+    diacritics: true,
+    ignoreJoiners: true,
+    each: function(element) {
+      element.setAttribute('id', 'sohayb');
+      element.setAttribute('title', 'sohayb_title');
+    },
+    done: function(totalMarks) {
+      window.getSelection().empty(); //This only in Chrome
+      console.log('total marks: ' + totalMarks);
+    },
+    filter: function(node, term, totalCounter, counter) {
+      var res = false;
+      if (counter === 0) {
+        res = selectionRange.isPointInRange(node, selectionRange.startOffset);
+      } else {
+        res = selectionRange.isPointInRange(node, 1);
+      }
+      console.log('Counter: ' + counter + ', startOffset: ' + selectionRange.startOffset);
+      return res;
+    },
+  });
 }
