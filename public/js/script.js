@@ -34,13 +34,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      // highlight('', '');
-     /* if (!selection || selection.isCollapsed) {
-        window.alert('Сначала выделите текст');
-      } else {
-        range = selection.getRangeAt(0);
-        range.surroundContents(spanNode);
-      }*/
+      document.execCommand('hiliteColor', false, 'blue');
     });
   });
 });
