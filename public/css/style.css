@@ -4,15 +4,15 @@ body {
 
 mark,
 .mark-red {
-  background-color: salmon; /*rgba(250, 128, 114, 0.5); #fa8072808*/
+  background-color: rgba(250, 128, 114, 0.5); /*salmon */
 }
 
 .mark-green {
-  background-color: yellowgreen; /*rgba(154, 205, 50, 0.5) #9acd3280*/
+  background-color: rgba(154, 205, 50, 0.5); /*yellowgreen */
 }
 
 .mark-yellow {
-  background-color: gold; /*rgba(255, 215, 0, 0.5) #ffd70080*/
+  background-color: rgba(255, 215, 0, 0.5); /*gold */
 }
 
 .main {

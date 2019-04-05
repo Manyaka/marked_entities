@@ -46,7 +46,7 @@
   };
 
   // import json from '/json/mainText.json'
-  // import json2 from '/json/mainCheckboxes.json'
+  // import json2 from '/json/mainTagsList.json'
 
   //получить данные из json
   // let mainText = require('@/json/mainText.json');

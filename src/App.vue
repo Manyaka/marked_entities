@@ -1,5 +1,5 @@
 <template>
-  <div data-id="app">
+  <div class="app">
     <MarkedEntities />
   </div>
 </template>

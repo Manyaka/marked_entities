@@ -1,0 +1,15 @@
+[
+  {
+    "id": 0,
+    "tag": "text",
+    // class or color
+  },
+  {
+    "id": 1,
+    "tag": "masha"
+  },
+  {
+    "id": 2,
+    "tag": "vue"
+  }
+]
