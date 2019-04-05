@@ -1,0 +1,14 @@
+[
+  {
+    "tag": "text",
+    "class": "mark-red"
+  },
+  {
+    "tag": "masha",
+    "class": "mark-green"
+  },
+  {
+    "tag": "vue",
+    "class": "mark-yellow"
+  }
+]

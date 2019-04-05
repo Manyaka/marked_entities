@@ -8,12 +8,12 @@
 
       <div class="main__checkboxes">
         <ul class="checkboxes-list">
-          <li class="checkboxes-list__item"
-              v-for="checkbox in mainCheckboxes"
-              v-bind:key="checkbox.id">
-            <input type="checkbox"
-                   v-bind:name="checkbox.label"
-                   v-bind:id="'ch' + checkbox.id">
+          <li v-for="checkbox in mainCheckboxes"
+              v-bind:key="checkbox.id"
+              class="checkboxes-list__item">
+            <input v-bind:id="'ch' + checkbox.id"
+                   type="checkbox"
+                   v-bind:name="checkbox.label">
             <label class="checkboxes-list__label" v-bind:for="'ch' + checkbox.id">
               {{ checkbox.label }}
             </label>
@@ -45,11 +45,11 @@
     mn('change');
   };
 
-  // import json from '/json/mainText.json'
-  // import json2 from '/json/mainTagsList.json'
+  // import json from '/json/text.json'
+  // import json2 from '/json/tagsList.json'
 
   //получить данные из json
-  // let mainText = require('@/json/mainText.json');
+  // let mainText = require('@/json/text.json');
   /*let mainCheckboxes = fetch('https://api.github.com/users/chriscoyier/repos')
    .then(response => response.json())
    .then(data => {

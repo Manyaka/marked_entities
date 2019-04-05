@@ -6,8 +6,8 @@
   },
   "extends": [
     "plugin:vue/essential",
-    "plugin:vue/strongly-recommended"
-    //"plugin:vue/recommended"
+    "plugin:vue/strongly-recommended",
+    "plugin:vue/recommended"
   ],
   "rules": {
     // override default options for rules from base configurations
