@@ -17,6 +17,8 @@
 
 <script>
   export default {
-    name: 'Checkboxes'
+    name: 'TagsListForMark'
   };
 </script>
+
+<style src="./ResultFromSelections.css"></style>

@@ -4,8 +4,8 @@
 
 <script>
   export default {
-    name: 'ResultFromSelection',
+    name: 'ResultFromSelections',
   };
 </script>
 
-<style src="./ResultFromSelection.css"></style>
+<style src="./ResultFromSelections.css"></style>

@@ -2,25 +2,25 @@
   <div class="main__wrapper">
     <div class="main">
       <TextForMark />
-      <!--<TagsList />-->
+      <!--<TagsListForMark />-->
     </div>
     <button class="btn" v-on:click="addSelectionToResult">
       Добавить в result
     </button>
-    <!--<ResultFromSelection />-->
+    <!--<ResultFromSelections />-->
   </div>
 </template>
 
 <script>
   import TextForMark from '../components/TextForMark';
-  import ResultFromSelection from '../components/ResultFromSelection';
-  import TagsList from '../components/TagsList';
+  import ResultFromSelections from '../components/ResultFromSelections';
+  import TagsListForMark from '../components/TagsListForMark';
 
   export default {
     name: 'MarkedEntities',
     components: {
-      ResultFromSelection,
-      TagsList,
+      ResultFromSelections,
+      TagsListForMark,
       TextForMark,
     },
     data() {
