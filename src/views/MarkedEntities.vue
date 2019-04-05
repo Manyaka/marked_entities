@@ -4,10 +4,11 @@
       <TextForMark />
       <!--<TagsListForMark />-->
     </div>
-    <button class="btn" v-on:click="addSelectionToResult">
+    <button class="btn" data-selector="btn-add"
+            v-on:click="addSelectionToResult">
       Добавить в result
     </button>
-    <!--<ResultFromSelections />-->
+    <ResultFromSelections />
   </div>
 </template>
 

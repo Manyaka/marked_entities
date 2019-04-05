@@ -1,10 +1,13 @@
 <template>
-  <div class="result">{{ mainResult }}</div>
+  <div class="result" data-selector="result-div">
+    {{ result }}
+  </div>
 </template>
 
 <script>
   export default {
     name: 'ResultFromSelections',
+    props: ['result']
   };
 </script>
 

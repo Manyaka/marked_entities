@@ -1,7 +1,8 @@
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
   //--------------------------------------------
   let button = document.querySelector('[data-selector="btn-add"]');
   let textDiv = document.querySelector('[data-selector="text-div"]');
+  console.log(textDiv);
   let resultDiv = document.querySelector('[data-selector="result-div"]');
   let resultArray = [];
   let selection;
