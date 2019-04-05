@@ -50,7 +50,8 @@
         "singleline": "never",
         "multiline": "never"
       }
-    ]
+    ],
+    "vue/html-closing-bracket-spacing": ""
   },
   "parserOptions": {
     "parser": "babel-eslint"

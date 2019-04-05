@@ -18,15 +18,6 @@ mark,
   background-color: rgba(255, 215, 0, 0.5); /*gold */
 }
 
-.main {
-  display: flex;
-  min-height: 10vh;
-  margin-bottom: 1em;
-}
 
-.main__wrapper {
-  max-width: 1024px;
-  margin: 2em auto;
-  background-color: pink;
-  /*min-height: 10vh;*/
-}
+
+

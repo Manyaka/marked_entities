@@ -69,14 +69,6 @@ mark,
   list-style: none;
 }
 
-.checkboxes-list__item {
-  visibility: visible;
-}
-
 .checkboxes-list__item:not(last-child) {
   margin-bottom: 0.5em;
-}
-
-.checkboxes-list__label {
-  visibility: visible;
 }

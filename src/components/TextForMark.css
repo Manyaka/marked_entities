@@ -1,0 +1,9 @@
+.main__text {
+  /*background-color: lightcyan;*/
+  width: 70%;
+  padding: 0.8em;
+}
+
+.main__text::selection {
+  background-color: yellow;
+}

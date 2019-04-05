@@ -1,24 +1,14 @@
-.main__text {
-  background-color: lightcyan;
-  width: 70%;
-  padding: 0.8em;
+.main {
+  display: flex;
+  min-height: 10vh;
+  margin-bottom: 1em;
 }
 
-.main__text::selection {
-  background-color: yellow;
-}
-
-.main__checkboxes {
-  background-color: gold;
-  width: 30%;
-  margin-left: 2em;
-  padding: 0.8em;
-}
-
-.result {
-  background-color: lavender;
-  min-height: 20vh;
-  padding: 0.8em;
+.main__wrapper {
+  max-width: 1024px;
+  margin: 2em auto;
+  /*background-color: pink;*/
+  /*min-height: 10vh;*/
 }
 
 .btn {
@@ -28,20 +18,4 @@
   color: white;
   margin: 0 auto 1em;
   display: block;
-}
-
-.checkboxes-list {
-  list-style: none;
-}
-
-.checkboxes-list__item {
-  visibility: visible;
-}
-
-.checkboxes-list__item:not(last-child) {
-  margin-bottom: 0.5em;
-}
-
-.checkboxes-list__label {
-  visibility: visible;
 }

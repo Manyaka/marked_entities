@@ -1,11 +1,11 @@
 <template>
-  <div class="app">
+  <div class="App">
     <MarkedEntities />
   </div>
 </template>
 
 <script>
-  import MarkedEntities from './views/MarkedEntities.vue';
+  import MarkedEntities from './views/MarkedEntities';
 
   export default {
     name: 'App',
