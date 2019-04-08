@@ -1,14 +1,13 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <TextForMark />
+      <TextForMark v-on:getselection="addSelection" />
       <!--<TagsListForMark />-->
     </div>
-    <button class="btn" data-selector="btn-add"
-            v-on:click="addSelectionToResult">
+    <button class="btn" data-selector="btn-add" v-on:click="addSelectionToResult">
       Добавить в result
     </button>
-    <ResultFromSelections />
+    <ResultFromSelections v-bind:result="resultArray" />
   </div>
 </template>
 
@@ -25,13 +24,21 @@
       TextForMark,
     },
     data() {
-      return {};
+      return {
+        selection: '',
+        resultArray: [],
+      };
     },
     mounted() {
     },
     methods: {
+      addSelection(selection) {
+        this.selection = selection;
+        console.log('mnmnmn', this.selection);
+      },
       addSelectionToResult() {
-
+        this.resultArray.push(this.selection);
+        console.log('this.resultArray=', this.resultArray);
       },
     },
   };

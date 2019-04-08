@@ -7,7 +7,12 @@
 <script>
   export default {
     name: 'ResultFromSelections',
-    props: ['result']
+    props: {
+      result: {
+        type: Array,
+        default: null
+      }
+    },
   };
 </script>
 

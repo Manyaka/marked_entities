@@ -49,6 +49,8 @@
           return;
         }
         console.log('getSelection:', this.selection.toString());
+        //тут эмит и передача данных
+        this.$emit('getselection', this.selection.toString());
       },
     },
   };
