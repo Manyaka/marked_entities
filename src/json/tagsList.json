@@ -1,14 +1,17 @@
 [
   {
-    "tag": "text",
-    "class": "mark-red"
+    "label": "География и иероглифы",
+    "class": "mark-red",
+    "name": "geography and hieroglyphs"
   },
   {
-    "tag": "masha",
-    "class": "mark-green"
+    "label": "Иероглифы",
+    "class": "mark-green",
+    "name": "hieroglyphs"
   },
   {
-    "tag": "vue",
-    "class": "mark-yellow"
+    "label": "География",
+    "class": "mark-yellow",
+    "name": "geography"
   }
 ]

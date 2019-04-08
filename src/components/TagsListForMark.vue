@@ -1,28 +1,26 @@
 <template>
-  <div class="main__checkboxes">
-    <ul class="checkboxes-list">
-      <li
-        v-for="checkbox in mainCheckboxes"
-        v-bind:key="checkbox.id"
-        class="checkboxes-list__item"
-      >
-        <input
-          v-bind:id="'ch' + checkbox.id"
-          type="checkbox"
-          v-bind:name="checkbox.label"
-        />
-        <label class="checkboxes-list__label" v-bind:for="'ch' + checkbox.id">
-          {{ checkbox.label }}
-        </label>
+  <div class="main__tags">
+    <ul class="tags-list">
+      <li v-for="tag in tagList" v-bind:key="tag.id" class="tags-list__item">
+        <button class="tags-list__btn" type="button" data-name="" data-class="">
+          {{ tag.label }}
+        </button>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import jsonList from '../json/tagsList.json';
+
   export default {
     name: 'TagsListForMark',
+    data() {
+      return {
+        tagList: jsonList,
+      };
+    },
   };
 </script>
 
-<style src="./ResultFromSelections.css"></style>
+<style src="./TagsListForMark.css"></style>

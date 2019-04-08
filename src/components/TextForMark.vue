@@ -48,8 +48,7 @@
         if (!this.selection || this.selection.isCollapsed) {
           return;
         }
-        console.log('getSelection:', this.selection.toString());
-        //тут эмит и передача данных
+        //тут эмит и передача данных родителю
         this.$emit('getselection', this.selection.toString());
       },
     },

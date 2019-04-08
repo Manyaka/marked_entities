@@ -1,6 +1,20 @@
-.main__checkboxes {
-  background-color: gold;
+.main__tags {
+  /*background-color: gold;*/
   width: 30%;
   margin-left: 2em;
   padding: 0.8em;
+}
+
+.tags-list {
+  list-style: none;
+}
+
+.tags-list__item:not(last-child) {
+  margin-bottom: 0.5em;
+}
+
+.tags-list__btn {
+  border: 1px solid grey;
+  padding: 0.5em 1em;
+  border-radius: 5px;
 }

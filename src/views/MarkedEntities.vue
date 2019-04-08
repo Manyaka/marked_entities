@@ -2,7 +2,7 @@
   <div class="main__wrapper">
     <div class="main">
       <TextForMark v-on:getselection="addSelection" />
-      <!--<TagsListForMark />-->
+      <TagsListForMark />
     </div>
     <button class="btn" data-selector="btn-add" v-on:click="addSelectionToResult">
       Добавить в result
@@ -34,11 +34,9 @@
     methods: {
       addSelection(selection) {
         this.selection = selection;
-        console.log('mnmnmn', this.selection);
       },
       addSelectionToResult() {
         this.resultArray.push(this.selection);
-        console.log('this.resultArray=', this.resultArray);
       },
     },
   };
