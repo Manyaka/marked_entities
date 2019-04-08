@@ -10,7 +10,7 @@
     props: {
       result: {
         type: Array,
-        default: null
+        default: () => []
       }
     },
   };

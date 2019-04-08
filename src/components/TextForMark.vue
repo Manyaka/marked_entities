@@ -48,7 +48,7 @@
         if (!this.selection || this.selection.isCollapsed) {
           return;
         }
-        //тут эмит и передача данных родителю
+        //тут имитация события и передача данных родителю
         this.$emit('getselection', this.selection.toString());
       },
     },
