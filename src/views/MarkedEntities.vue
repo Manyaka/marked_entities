@@ -1,13 +1,26 @@
 <template>
   <div class="main__wrapper">
     <div class="main">
-      <TextForMark v-on:getselection="addSelection" />
-      <TagsListForMark />
+
+      <TextForMark
+        v-on:getselection="getSelectionFromChildComponent"
+        v-on:getrange="getRangeFromChildComponent" />
+
+      <TagsListForMark
+        v-bind:range="range"
+        v-bind:selection="selection" />
+
     </div>
-    <button class="btn" data-selector="btn-add" v-on:click="addSelectionToResult">
+
+    <button class="btn"
+            data-selector="btn-add"
+            v-on:click="addSelectionToResult">
       Добавить в result
     </button>
-    <ResultFromSelections v-bind:result="resultArray" />
+
+    <ResultFromSelections
+      v-bind:result="resultArray" />
+
   </div>
 </template>
 
@@ -26,17 +39,21 @@
     data() {
       return {
         selection: '',
+        range: '',
         resultArray: [],
       };
     },
     mounted() {
     },
     methods: {
-      addSelection(selection) {
+      getSelectionFromChildComponent(selection) {
         this.selection = selection;
       },
+      getRangeFromChildComponent(range) {
+        this.range = range;
+      },
       addSelectionToResult() {
-        this.resultArray.push(this.selection);
+        this.resultArray.push(this.selection.toString());
       },
     },
   };

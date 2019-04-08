@@ -12,14 +12,13 @@
     data() {
       return {
         text: jsonText.text,
-        selectionsArray: [],
         selection: '',
+        range: '',
         selectionChangeTimer: null,
         textDiv: null,
       };
     },
     created() {
-      // this.selectionsArray = [];
       // this.selection = '';
       // this.selectionChangeTimer = null;
     },
@@ -41,15 +40,17 @@
       //debounce the event onselectionchange
       handleSelectionChange() {
         clearTimeout(this.selectionChangeTimer);
-        this.selectionChangeTimer = setTimeout(() => this.getSelection(), 500);
+        this.selectionChangeTimer = setTimeout(() => this.getSelectionAndRange(), 500);
       },
-      getSelection() {
+      getSelectionAndRange() {
         this.selection = document.getSelection();
         if (!this.selection || this.selection.isCollapsed) {
           return;
         }
+        this.range = this.selection.getRangeAt(0);
         //тут имитация события и передача данных родителю
-        this.$emit('getselection', this.selection.toString());
+        this.$emit('getselection', this.selection);
+        this.$emit('getrange', this.range);
       },
     },
   };
