@@ -12,8 +12,8 @@
     data() {
       return {
         text: jsonText.text,
-        selection: '',
-        range: '',
+        selection: {},
+        range: {},
         selectionChangeTimer: null,
         textDiv: null,
       };

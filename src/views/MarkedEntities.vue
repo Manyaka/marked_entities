@@ -38,8 +38,8 @@
     },
     data() {
       return {
-        selection: '',
-        range: '',
+        selection: {},
+        range: {},
         resultArray: [],
       };
     },
