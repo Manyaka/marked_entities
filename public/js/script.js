@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function getSelection() {
     selection = document.getSelection();
+
     if (!selection.rangeCount) {
       return;
     }

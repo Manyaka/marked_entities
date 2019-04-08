@@ -26,27 +26,26 @@
     mounted() {
       let self = this;
       this.textDiv = document.querySelector('[data-selector="text-div"]');
-
-      document.onselectionchange = function() {
-        //селекшн должен считываться только в блоке текста
+      this.sel = function() {
         if (document.getSelection().containsNode(self.textDiv, true)) {
           self.handleSelectionChange();
         }
       };
+      document.addEventListener('selectionchange', this.sel);
     },
     beforeDestroy() {
       //убрать за собой
-
+      document.removeEventListener('selectionchange', this.sel);
     },
     methods: {
       //debounce the event onselectionchange
       handleSelectionChange() {
         clearTimeout(this.selectionChangeTimer);
-        this.selectionChangeTimer = setTimeout(this.getSelection(), 500);
+        this.selectionChangeTimer = setTimeout(() => this.getSelection(), 500);
       },
       getSelection() {
         this.selection = document.getSelection();
-        if (!this.selection.rangeCount) {
+        if (!this.selection || this.selection.isCollapsed) {
           return;
         }
         console.log('getSelection:', this.selection.toString());
