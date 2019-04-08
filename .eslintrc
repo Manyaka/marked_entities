@@ -11,10 +11,19 @@
   ],
   "rules": {
     // override default options for rules from base configurations
-    "arrow-parens": ["warn", "always"],
-    "comma-dangle": ["warn", "only-multiline"],
+    "arrow-parens": [
+      "warn",
+      "always"
+    ],
+    "comma-dangle": [
+      "warn",
+      "only-multiline"
+    ],
     // disable rules from base configurations
-    "indent": ["off", 2],
+    "indent": [
+      "off",
+      2
+    ],
     "no-console": "off",
     "no-debugger": "off",
     "prefer-const": "off",
@@ -51,7 +60,25 @@
         "multiline": "never"
       }
     ],
-    "vue/html-closing-bracket-spacing": ""
+    "vue/html-closing-bracket-spacing": [
+      "warn",
+      {
+        "startTag": "never",
+        "endTag": "never",
+        "selfClosingTag": "always"
+      }
+    ],
+    "vue/multiline-html-element-content-newline": [
+      "warn",
+      {
+        "ignoreWhenEmpty": true,
+        "ignores": [
+          "pre",
+          "textarea"
+        ],
+        "allowEmptyLines": true
+      }
+    ]
   },
   "parserOptions": {
     "parser": "babel-eslint"
