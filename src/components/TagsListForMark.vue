@@ -11,7 +11,7 @@
                 v-bind:class="tag.class"
                 v-bind:data-name="tag.name"
                 v-bind:data-class="tag.class"
-                v-on:click="mn">
+                v-on:click="addTagMark">
           {{ tag.label }}
         </button>
 
@@ -42,7 +42,7 @@
       };
     },
     methods: {
-      mn(event) {
+      addTagMark(event) {
         let markNode = this.createMarkNode(event);
         this.range.surroundContents(markNode);
         this.selection.removeAllRanges();

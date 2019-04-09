@@ -23,11 +23,10 @@
       // this.selectionChangeTimer = null;
     },
     mounted() {
-      let self = this;
       this.textDiv = this.$refs.textDiv;
-      this.sel = function() {
-        if (document.getSelection().containsNode(self.textDiv, true)) {
-          self.handleSelectionChange();
+      this.sel = () => {
+        if (document.getSelection().containsNode(this.textDiv, true)) {
+          this.handleSelectionChange();
         }
       };
       document.addEventListener('selectionchange', this.sel);
