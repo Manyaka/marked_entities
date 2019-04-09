@@ -2,20 +2,37 @@
 @import "reset.css";
 
 body {
-  font: 18px/1.3 'Avenir', Helvetica, Arial, sans-serif;
+  font: 18px/1.7 'Avenir', Helvetica, Arial, sans-serif;
 }
 
-mark,
+mark {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+}
+
 .mark-red {
   background-color: rgba(250, 128, 114, 0.5); /*salmon */
+}
+
+.mark-red-border {
+  border-color: salmon;
 }
 
 .mark-green {
   background-color: rgba(154, 205, 50, 0.5); /*yellowgreen */
 }
 
+.mark-green-border {
+  border-color: yellowgreen;
+}
+
 .mark-yellow {
   background-color: rgba(255, 215, 0, 0.5); /*gold */
+}
+
+.mark-yellow-border {
+  border-color: gold;
 }
 
 
