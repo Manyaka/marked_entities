@@ -1,5 +1,5 @@
 <template>
-  <div class="main__text" data-selector="text-div">
+  <div ref="textDiv" class="main__text">
     {{ text }}
   </div>
 </template>
@@ -24,7 +24,7 @@
     },
     mounted() {
       let self = this;
-      this.textDiv = document.querySelector('[data-selector="text-div"]');
+      this.textDiv = this.$refs.textDiv;
       this.sel = function() {
         if (document.getSelection().containsNode(self.textDiv, true)) {
           self.handleSelectionChange();
