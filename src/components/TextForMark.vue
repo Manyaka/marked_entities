@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  //TODO api.js
   import jsonText from '../json/text.json';
 
   export default {
@@ -47,7 +48,7 @@
           return;
         }
         this.range = this.selection.getRangeAt(0);
-        //тут имитация события и передача данных родителю
+        //тут эмиссия события и передача данных родителю
         this.$emit('getselection', this.selection);
         this.$emit('getrange', this.range);
       },

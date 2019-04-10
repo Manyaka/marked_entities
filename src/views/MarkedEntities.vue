@@ -48,9 +48,11 @@
     methods: {
       getSelectionFromChildComponent(selection) {
         this.selection = selection;
+        // console.log('this.selection1=', this.selection, '**', typeof this.selection);
       },
       getRangeFromChildComponent(range) {
         this.range = range;
+        // console.log('this.range1=', this.range, '**', typeof this.range);
       },
       addSelectionToResult() {
         this.resultArray.push(this.selection.toString());

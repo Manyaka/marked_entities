@@ -11,6 +11,7 @@ mark {
   border-width: 2px;
 }
 
+/*TODO цвета генерировать рандомно, потому что неизвестно сколько будет тегов*/
 .mark-red {
   background-color: rgba(250, 128, 114, 0.5); /*salmon */
 }

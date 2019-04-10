@@ -22,17 +22,18 @@
 </template>
 
 <script>
+  //TODO api.js
   import jsonList from '../json/tagsList.json';
 
   export default {
     name: 'TagsListForMark',
     props: {
       range: {
-        type: Object,
+        type: [Object, Range],
         default: () => ({}),
       },
       selection: {
-        type: Object,
+        type: [Object, Selection],
         default: () => ({}),
       },
     },
@@ -41,6 +42,10 @@
         tagList: jsonList,
       };
     },
+    mounted() {
+      // console.log('this.selection2=', this.selection, '**', typeof this.selection);
+      // console.log('this.range2=', this.range, '**', typeof this.range);
+    },
     methods: {
       addTagMark(event) {
         let markNode = this.createMarkNode(event);
@@ -48,6 +53,7 @@
         this.selection.removeAllRanges();
       },
       //создаём тег mark с нужным обвесом
+      //TODO mark сделать компонентом
       createMarkNode() {
         let markNode = document.createElement('mark');
         let dataName = document.createAttribute('data-name');
@@ -56,6 +62,8 @@
         className.value = event.target.dataset.class;
         markNode.setAttributeNode(dataName);
         markNode.setAttributeNode(className);
+        //hover on mark tag mouseover/mouseout
+
         return markNode;
       },
     },
