@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
   //--------------------------------------------
   let button = document.querySelector('[data-selector="btn-add"]');
   let textDiv = document.querySelector('[data-selector="text-div"]');
-  console.log(textDiv);
   let resultDiv = document.querySelector('[data-selector="result-div"]');
   let resultArray = [];
   let selection;
@@ -18,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function getSelection() {
     selection = document.getSelection();
 
-    if (!selection.rangeCount) {
+    if (!selection || selection.isCollapsed) {
       return;
     }
-    console.log('getSelection:', selection.toString());
+    // console.log('getSelection:', selection.toString());
   }
 
   document.onselectionchange = function() {
