@@ -9,6 +9,7 @@ mark {
   background-color: transparent;
   border-style: solid;
   border-width: 2px;
+  opacity: .5;
 }
 
 /*TODO цвета генерировать рандомно, потому что неизвестно сколько будет тегов*/
