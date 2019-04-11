@@ -13,5 +13,20 @@
     "label": "География",
     "class": "mark-yellow-border",
     "name": "geography"
+  },
+  {
+    "label": "География и иероглифы",
+    "class": "mark-red-border",
+    "name": "geography and hieroglyphs"
+  },
+  {
+    "label": "Иероглифы",
+    "class": "mark-green-border",
+    "name": "hieroglyphs"
+  },
+  {
+    "label": "География",
+    "class": "mark-yellow-border",
+    "name": "geography"
   }
 ]
