@@ -12,10 +12,14 @@
 
     </div>
 
-    <button class="btn"
-            data-selector="btn-add"
-            v-on:click="addSelectionToResult">
+    <button type="button" class="btn" v-on:click="addSelectionToResult">
       Добавить в result
+    </button>
+    <button type="button" class="btn" v-on:click="exportMN">
+      Экспорт
+    </button>
+    <button type="button" class="btn" v-on:click="importMN">
+      Импорт
     </button>
 
     <ResultFromSelections
@@ -57,6 +61,9 @@
       addSelectionToResult() {
         this.resultArray.push(this.selection.toString());
       },
+      //новые методы экспорта/импорта
+      exportMN() {},
+      importMN() {}
     },
   };
 </script>
