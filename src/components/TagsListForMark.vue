@@ -11,6 +11,7 @@
                 v-bind:class="tag.class"
                 v-bind:data-name="tag.name"
                 v-bind:data-class="tag.class"
+                v-bind:data-label="tag.label"
                 v-on:click="addTagMark">
           {{ tag.label }}
         </button>
@@ -58,10 +59,13 @@
         let markNode = document.createElement('mark');
         let dataName = document.createAttribute('data-name');
         let className = document.createAttribute('class');
+        let title = document.createAttribute('title');
         dataName.value = event.target.dataset.name;
         className.value = event.target.dataset.class;
+        title.value = event.target.dataset.label;
         markNode.setAttributeNode(dataName);
         markNode.setAttributeNode(className);
+        markNode.setAttributeNode(title);
         //hover on mark tag mouseover/mouseout
 
         return markNode;
