@@ -43,10 +43,6 @@
         tagList: jsonList,
       };
     },
-    mounted() {
-      // console.log('this.selection2=', this.selection, '**', typeof this.selection);
-      // console.log('this.range2=', this.range, '**', typeof this.range);
-    },
     methods: {
       addTagMark(event) {
         let markNode = this.createMarkNode(event);
