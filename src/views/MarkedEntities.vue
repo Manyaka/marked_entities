@@ -2,9 +2,9 @@
   <div class="main__wrapper">
     <div class="main">
 
-      <TextForMark
-        v-on:getselection="getSelectionFromChildComponent"
-        v-on:getrange="getRangeFromChildComponent" />
+      <TextForMark ref="TextForMark"
+                   v-on:getselection="getSelectionFromChildComponent"
+                   v-on:getrange="getRangeFromChildComponent" />
 
       <TagsListForMark
         v-bind:range="range"
@@ -12,18 +12,22 @@
 
     </div>
 
-    <button type="button" class="btn" v-on:click="addSelectionToResult">
+    <!--<button type="button" class="btn" v-on:click="addSelectionToResult">
       Добавить в result
-    </button>
-    <button type="button" class="btn" v-on:click="exportMN">
+    </button>-->
+    <button type="button" class="btn" v-on:click="exportTextWithMarkTags">
       Экспорт
     </button>
     <button type="button" class="btn" v-on:click="importMN">
       Импорт
     </button>
 
-    <ResultFromSelections
-      v-bind:result="resultArray" />
+    <!--<ResultFromSelections
+      v-bind:result="resultArray" />-->
+
+    <h3>Экспорт</h3>
+    <!--TODO можно подсветку тегов сделать-->
+    <div ref="exportDiv" class="export">{{ exportedText }}</div>
 
   </div>
 </template>
@@ -45,9 +49,8 @@
         selection: {},
         range: {},
         resultArray: [],
+        exportedText: null,
       };
-    },
-    mounted() {
     },
     methods: {
       getSelectionFromChildComponent(selection) {
@@ -61,9 +64,12 @@
       addSelectionToResult() {
         this.resultArray.push(this.selection.toString());
       },
-      //новые методы экспорта/импорта
-      exportMN() {},
-      importMN() {}
+      //методы экспорта/импорта
+      exportTextWithMarkTags() {
+        this.exportedText = this.$refs.TextForMark.$refs.textDiv.innerHTML;
+      },
+      importMN() {
+      },
     },
   };
 </script>

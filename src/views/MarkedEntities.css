@@ -21,3 +21,9 @@
 .btn:not(:last-child) {
   margin-right: 2em;
 }
+
+.export {
+  background-color: khaki;
+  min-height: 20vh;
+  padding: 0.8em;
+}
