@@ -1,18 +1,21 @@
 <template>
   <div ref="textDiv" class="main__text">
-    {{ text }}
+    <!--{{ textLong }}-->
+    {{ textShort }}
   </div>
 </template>
 
 <script>
   //TODO api.js
-  import jsonText from '../json/text.json';
+  import jsonTextLong from '../json/textLong.json';
+  import jsonTextShort from '../json/textShort.json';
 
   export default {
     name: 'TextForMark',
     data() {
       return {
-        text: jsonText.text,
+        textLong: jsonTextLong.text,
+        textShort: jsonTextShort.text,
         selection: {},
         range: {},
         selectionChangeTimer: null,
