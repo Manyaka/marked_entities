@@ -3,6 +3,7 @@
     <div class="main">
 
       <TextForMark ref="TextForMark"
+                   v-bind:imported-text="importedText"
                    v-on:getselection="getSelectionFromChildComponent"
                    v-on:getrange="getRangeFromChildComponent" />
 
@@ -18,7 +19,7 @@
     <button type="button" class="btn" v-on:click="exportTextWithMarkTags">
       Экспорт
     </button>
-    <button type="button" class="btn" v-on:click="importMN">
+    <button type="button" class="btn" v-on:click="importTextWithMarkTags">
       Импорт
     </button>
 
@@ -40,7 +41,7 @@
   export default {
     name: 'MarkedEntities',
     components: {
-      ResultFromSelections,
+      // ResultFromSelections,
       TagsListForMark,
       TextForMark,
     },
@@ -50,6 +51,7 @@
         range: {},
         resultArray: [],
         exportedText: null,
+        importedText: null
       };
     },
     methods: {
@@ -66,7 +68,8 @@
       exportTextWithMarkTags() {
         this.exportedText = this.$refs.TextForMark.$refs.textDiv.innerHTML;
       },
-      importMN() {
+      importTextWithMarkTags() {
+        this.importedText = this.exportedText;
       },
     },
   };

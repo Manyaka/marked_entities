@@ -44,6 +44,8 @@
       };
     },
     methods: {
+      //TODO можно добавить один и тот же марк к одному и тому же выделенному фрагменту
+      //поправить это
       addTagMark(event) {
         let markNode = this.createMarkNode(event);
         this.range.surroundContents(markNode);

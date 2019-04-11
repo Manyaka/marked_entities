@@ -1,7 +1,14 @@
 <template>
-  <div ref="textDiv" class="main__text">
-    <!--{{ textLong }}-->
-    {{ textShort }}
+  <div class="main__text">
+    <h3>Начальный текст</h3>
+    <div ref="textDiv">
+      <!--{{ textLong }}-->
+      {{ textShort }}
+    </div>
+    <hr>
+    <!--TODO чтобы не было 2 экземпляра текста, надо оригиналльный заменять импортнутым    -->
+    <h3>Импорт</h3>
+    <div v-html="importedText"></div>
   </div>
 </template>
 
@@ -12,6 +19,12 @@
 
   export default {
     name: 'TextForMark',
+    props: {
+      importedText: {
+        type: String,
+        default: '',
+      },
+    },
     data() {
       return {
         textLong: jsonTextLong.text,
