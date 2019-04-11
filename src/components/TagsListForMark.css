@@ -3,10 +3,12 @@
   width: 30%;
   margin-left: 2em;
   padding: 0.8em;
+  position: relative;
 }
 
 .tags-list {
   list-style: none;
+  position: fixed;
 }
 
 .tags-list__item:not(last-child) {

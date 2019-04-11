@@ -2,9 +2,10 @@
   <div class="main__wrapper">
     <div class="main">
 
-      <TextForMark
-        v-on:getselection="getSelectionFromChildComponent"
-        v-on:getrange="getRangeFromChildComponent" />
+      <TextForMark ref="TextForMark"
+                   v-bind:imported-text="importedText"
+                   v-on:getselection="getSelectionFromChildComponent"
+                   v-on:getrange="getRangeFromChildComponent" />
 
       <TagsListForMark
         v-bind:range="range"
@@ -12,14 +13,22 @@
 
     </div>
 
-    <button class="btn"
-            data-selector="btn-add"
-            v-on:click="addSelectionToResult">
+    <!--<button type="button" class="btn" v-on:click="addSelectionToResult">
       Добавить в result
+    </button>-->
+    <button type="button" class="btn" v-on:click="exportTextWithMarkTags">
+      Экспорт
+    </button>
+    <button type="button" class="btn" v-on:click="importTextWithMarkTags">
+      Импорт
     </button>
 
-    <ResultFromSelections
-      v-bind:result="resultArray" />
+    <!--<ResultFromSelections
+      v-bind:result="resultArray" />-->
+
+    <h3>Экспорт</h3>
+    <!--TODO можно подсветку тегов сделать-->
+    <div ref="exportDiv" class="export">{{ exportedText }}</div>
 
   </div>
 </template>
@@ -32,7 +41,7 @@
   export default {
     name: 'MarkedEntities',
     components: {
-      ResultFromSelections,
+      // ResultFromSelections,
       TagsListForMark,
       TextForMark,
     },
@@ -41,9 +50,9 @@
         selection: {},
         range: {},
         resultArray: [],
+        exportedText: null,
+        importedText: null
       };
-    },
-    mounted() {
     },
     methods: {
       getSelectionFromChildComponent(selection) {
@@ -54,6 +63,13 @@
       },
       addSelectionToResult() {
         this.resultArray.push(this.selection.toString());
+      },
+      //методы экспорта/импорта
+      exportTextWithMarkTags() {
+        this.exportedText = this.$refs.TextForMark.$refs.textDiv.innerHTML;
+      },
+      importTextWithMarkTags() {
+        this.importedText = this.exportedText;
       },
     },
   };

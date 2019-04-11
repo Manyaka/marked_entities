@@ -1,5 +1,5 @@
 <template>
-  <div class="result" data-selector="result-div">
+  <div class="result">
     {{ result }}
   </div>
 </template>
