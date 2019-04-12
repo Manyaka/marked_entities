@@ -1,32 +1,26 @@
 [
   {
     "label": "География и иероглифы",
-    "class": "mark-red-border",
     "name": "geography and hieroglyphs"
   },
   {
     "label": "Иероглифы",
-    "class": "mark-green-border",
     "name": "hieroglyphs"
   },
   {
     "label": "География",
-    "class": "mark-yellow-border",
     "name": "geography"
   },
   {
-    "label": "География и иероглифы",
-    "class": "mark-red-border",
-    "name": "geography and hieroglyphs"
+    "label": "Деревня",
+    "name": "village"
   },
   {
-    "label": "Иероглифы",
-    "class": "mark-green-border",
-    "name": "hieroglyphs"
+    "label": "Термин",
+    "name": "term"
   },
   {
-    "label": "География",
-    "class": "mark-yellow-border",
-    "name": "geography"
+    "label": "Перевод",
+    "name": "translation"
   }
 ]

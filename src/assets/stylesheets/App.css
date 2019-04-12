@@ -12,31 +12,6 @@ mark {
   color: gray;
 }
 
-/*TODO цвета генерировать рандомно, потому что неизвестно сколько будет тегов*/
-.mark-red {
-  background-color: rgba(250, 128, 114, 0.5); /*salmon */
-}
-
-.mark-red-border {
-  border-color: salmon;
-}
-
-.mark-green {
-  background-color: rgba(154, 205, 50, 0.5); /*yellowgreen */
-}
-
-.mark-green-border {
-  border-color: yellowgreen;
-}
-
-.mark-yellow {
-  background-color: rgba(255, 215, 0, 0.5); /*gold */
-}
-
-.mark-yellow-border {
-  border-color: gold;
-}
-
 h3 {
   font-weight: bold;
 }
