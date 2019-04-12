@@ -45,13 +45,14 @@
     methods: {
       //TODO можно добавить один и тот же марк к одному и тому же выделенному фрагменту
       //поправить это
+      //добавляем вокруг селекшена тег mark
       addTagMark(event) {
         let markNode = this.createMarkNode(event);
         this.range.surroundContents(markNode);
         this.selection.removeAllRanges();
       },
       //создаём тег mark с нужным обвесом
-      //TODO mark сделать компонентом
+      //TODO mark сделать компонентом?
       createMarkNode(event) {
         let markNode = document.createElement('mark');
         let dataName = document.createAttribute('data-name');
