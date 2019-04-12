@@ -47,9 +47,15 @@
       //поправить это
       //добавляем вокруг селекшена тег mark
       addTagMark(event) {
-        let markNode = this.createMarkNode(event);
-        this.range.surroundContents(markNode);
-        this.selection.removeAllRanges();
+        if (!this.selection ||
+          this.selection.isCollapsed ||
+          Object.getOwnPropertyNames(this.selection).length) {
+          window.alert('Сначала выделите текст');
+        } else {
+          let markNode = this.createMarkNode(event);
+          this.range.surroundContents(markNode);
+          this.selection.removeAllRanges();
+        }
       },
       //создаём тег mark с нужным обвесом
       //TODO mark сделать компонентом?
