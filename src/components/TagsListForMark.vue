@@ -11,7 +11,8 @@
                 v-bind:class="tag.class"
                 v-bind:data-name="tag.name"
                 v-bind:data-class="tag.class"
-                v-on:click="mn">
+                v-bind:data-label="tag.label"
+                v-on:click="addTagMark">
           {{ tag.label }}
         </button>
 
@@ -22,17 +23,18 @@
 </template>
 
 <script>
+  //TODO api.js
   import jsonList from '../json/tagsList.json';
 
   export default {
     name: 'TagsListForMark',
     props: {
       range: {
-        type: Object,
+        type: [Object, Range],
         default: () => ({}),
       },
       selection: {
-        type: Object,
+        type: [Object, Selection],
         default: () => ({}),
       },
     },
@@ -42,20 +44,28 @@
       };
     },
     methods: {
-      mn(event) {
+      //TODO можно добавить один и тот же марк к одному и тому же выделенному фрагменту
+      //поправить это
+      addTagMark(event) {
         let markNode = this.createMarkNode(event);
         this.range.surroundContents(markNode);
         this.selection.removeAllRanges();
       },
       //создаём тег mark с нужным обвесом
+      //TODO mark сделать компонентом
       createMarkNode() {
         let markNode = document.createElement('mark');
         let dataName = document.createAttribute('data-name');
         let className = document.createAttribute('class');
+        let title = document.createAttribute('title');
         dataName.value = event.target.dataset.name;
         className.value = event.target.dataset.class;
+        title.value = event.target.dataset.label;
         markNode.setAttributeNode(dataName);
         markNode.setAttributeNode(className);
+        markNode.setAttributeNode(title);
+        //hover on mark tag mouseover/mouseout
+
         return markNode;
       },
     },

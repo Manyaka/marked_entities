@@ -1,17 +1,34 @@
 <template>
-  <div class="main__text" data-selector="text-div">
-    {{ text }}
+  <div class="main__text">
+    <h3>Начальный текст</h3>
+    <div ref="textDiv">
+      <!--{{ textLong }}-->
+      {{ textShort }}
+    </div>
+    <hr>
+    <!--TODO чтобы не было 2 экземпляра текста, надо оригиналльный заменять импортнутым    -->
+    <h3>Импорт</h3>
+    <div v-html="importedText"></div>
   </div>
 </template>
 
 <script>
-  import jsonText from '../json/text.json';
+  //TODO api.js
+  import jsonTextLong from '../json/textLong.json';
+  import jsonTextShort from '../json/textShort.json';
 
   export default {
     name: 'TextForMark',
+    props: {
+      importedText: {
+        type: String,
+        default: '',
+      },
+    },
     data() {
       return {
-        text: jsonText.text,
+        textLong: jsonTextLong.text,
+        textShort: jsonTextShort.text,
         selection: {},
         range: {},
         selectionChangeTimer: null,
@@ -23,11 +40,10 @@
       // this.selectionChangeTimer = null;
     },
     mounted() {
-      let self = this;
-      this.textDiv = document.querySelector('[data-selector="text-div"]');
-      this.sel = function() {
-        if (document.getSelection().containsNode(self.textDiv, true)) {
-          self.handleSelectionChange();
+      this.textDiv = this.$refs.textDiv;
+      this.sel = () => {
+        if (document.getSelection().containsNode(this.textDiv, true)) {
+          this.handleSelectionChange();
         }
       };
       document.addEventListener('selectionchange', this.sel);
@@ -48,7 +64,7 @@
           return;
         }
         this.range = this.selection.getRangeAt(0);
-        //тут имитация события и передача данных родителю
+        //тут эмиссия события и передача данных родителю
         this.$emit('getselection', this.selection);
         this.$emit('getrange', this.range);
       },
