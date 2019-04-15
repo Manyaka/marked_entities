@@ -8,9 +8,8 @@
 
         <button type="button"
                 class="tags-list__btn"
-                v-bind:class="tag.class"
+                v-bind:style="`border-color: ${generateColor()};`"
                 v-bind:data-name="tag.name"
-                v-bind:data-class="tag.class"
                 v-bind:data-label="tag.label"
                 v-on:click="addTagMark">
           {{ tag.label }}
@@ -46,27 +45,37 @@
     methods: {
       //TODO можно добавить один и тот же марк к одному и тому же выделенному фрагменту
       //поправить это
+      //добавляем вокруг селекшена тег mark
       addTagMark(event) {
-        let markNode = this.createMarkNode(event);
-        this.range.surroundContents(markNode);
-        this.selection.removeAllRanges();
+        if (!this.selection ||
+          this.selection.isCollapsed ||
+          Object.getOwnPropertyNames(this.selection).length) {
+          window.alert('Сначала выделите текст');
+        } else {
+          let markNode = this.createMarkNode(event);
+          this.range.surroundContents(markNode);
+          this.selection.removeAllRanges();
+        }
       },
       //создаём тег mark с нужным обвесом
-      //TODO mark сделать компонентом
-      createMarkNode() {
+      //TODO mark сделать компонентом?
+      createMarkNode(event) {
         let markNode = document.createElement('mark');
         let dataName = document.createAttribute('data-name');
-        let className = document.createAttribute('class');
+        let style = document.createAttribute('style');
         let title = document.createAttribute('title');
         dataName.value = event.target.dataset.name;
-        className.value = event.target.dataset.class;
+        style.value = `border-color: ${event.target.style.borderColor};`;
         title.value = event.target.dataset.label;
         markNode.setAttributeNode(dataName);
-        markNode.setAttributeNode(className);
+        markNode.setAttributeNode(style);
         markNode.setAttributeNode(title);
-        //hover on mark tag mouseover/mouseout
 
         return markNode;
+      },
+      //рандомное подставление цветов
+      generateColor() {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
       },
     },
   };
