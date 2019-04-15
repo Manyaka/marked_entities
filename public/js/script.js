@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   //--------------------------------------------
   let button = document.querySelector('[data-selector="btn-add"]');
+  let buttonDelete = document.querySelector('[data-selector="btn-delete"]');
   let textDiv = document.querySelector('[data-selector="text-div"]');
   let resultDiv = document.querySelector('[data-selector="result-div"]');
   let resultArray = [];
@@ -34,12 +35,30 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   button.addEventListener('click', function() {
-    //TODO предупреждать, что выделен текст не в том месте, или просто держать кнопку
-    // дисайблед
     resultArray.push(selection.toString());
     resultDiv.textContent = resultArray;
   });
   //--------------------------------------------
+
+  buttonDelete.addEventListener('click', function() {
+    if (!selection || selection.isCollapsed) {
+      window.alert('Сначала выделите текст');
+      return;
+    } else {
+      // console.log(selection);
+      // console.log(selection.anchorNode); //node
+      // console.log(selection.anchorNode.parentElement); //mark
+      let markNode = selection.anchorNode.parentElement;
+      // console.log(markNode.id);
+      // console.log(mn.addEventListener('click', console.log('click')));
+
+      let marksHTMLCollection = document.getElementsByTagName('mark');
+      // console.log(marksHTMLCollection);
+      let theMark = marksHTMLCollection.namedItem(markNode.id);
+      // console.log(typeof theMark, '**', theMark instanceof Element);
+      theMark.outerHTML = theMark.innerHTML;
+    }
+  });
 
   //--------------------------------------------
   //selection тоже используется в этом блоке
@@ -53,13 +72,17 @@ document.addEventListener('DOMContentLoaded', function() {
       let markNode = document.createElement('mark');
       let dataName = document.createAttribute('data-name');
       let className = document.createAttribute('class');
+      let id = document.createAttribute('id');
       dataName.value = event.target.dataset.name;
       className.value = event.target.dataset.class;
+      id.value = setRandomId();
       markNode.setAttributeNode(dataName);
       markNode.setAttributeNode(className);
+      markNode.setAttributeNode(id);
 
       if (!selection || selection.isCollapsed) {
         window.alert('Сначала выделите текст');
+        return;
       } else {
         let range = selection.getRangeAt(0);
         range.surroundContents(markNode);
@@ -73,3 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //input.setSelectionRange(1, 56);
+
+function setRandomId() {
+  return `id${Math.floor(Math.random() * 100)}`;
+}
