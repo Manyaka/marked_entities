@@ -50,11 +50,11 @@
         if (!this.selection ||
           this.selection.isCollapsed ||
           Object.getOwnPropertyNames(this.selection).length) {
-          window.alert('Сначала выделите текст');
+          // window.alert('Сначала выделите текст');
         } else {
           let markNode = this.createMarkNode(event);
           this.range.surroundContents(markNode);
-          this.selection.removeAllRanges();
+          // this.selection.removeAllRanges();
         }
       },
       //создаём тег mark с нужным обвесом
@@ -63,13 +63,13 @@
         let markNode = document.createElement('mark');
         let dataName = document.createAttribute('data-name');
         let style = document.createAttribute('style');
-        let title = document.createAttribute('title');
+        let tooltip = document.createAttribute('tooltip');
         dataName.value = event.target.dataset.name;
         style.value = `border-color: ${event.target.style.borderColor};`;
-        title.value = event.target.dataset.label;
+        tooltip.value = event.target.dataset.label;
         markNode.setAttributeNode(dataName);
         markNode.setAttributeNode(style);
-        markNode.setAttributeNode(title);
+        markNode.setAttributeNode(tooltip);
 
         return markNode;
       },

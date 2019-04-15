@@ -10,6 +10,43 @@ mark {
   border-style: solid;
   border-width: 2px;
   color: gray;
+  position: relative;
+}
+
+mark::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+  z-index: 99;
+  opacity: 0;
+}
+
+mark::after {
+  content: attr(tooltip);
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  transform: translateX(-50%) translateY(-100%);
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: #fff;
+  padding: 4px 2px;
+  font-size: 12px;
+  min-width: 80px;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0;
+}
+
+mark:hover::before,
+mark:hover::after {
+  opacity: 1;
 }
 
 h3 {
