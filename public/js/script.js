@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // console.log(selection.anchorNode.parentElement); //mark
       let markNode = selection.anchorNode.parentElement;
       // console.log(markNode.id);
-      // console.log(mn.addEventListener('click', console.log('click')));
+      // console.log(markNode.addEventListener('click', console.log('click')));
 
       let marksHTMLCollection = document.getElementsByTagName('mark');
       // console.log(marksHTMLCollection);

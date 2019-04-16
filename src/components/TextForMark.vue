@@ -1,15 +1,13 @@
 <template>
   <div class="main__text">
-    <h3>Начальный текст</h3>
+    <!--<h3>Начальный текст</h3>-->
     <div ref="textDiv">
       <!--{{ textLong }}-->
       {{ textShort }}
     </div>
-    <hr>
-    <!--TODO чтобы не было 2 экземпляра текста, надо оригинальный заменять
-    импортнутым?-->
-    <h3>Импорт</h3>
-    <div v-html="importedText"></div>
+    <!--<hr>-->
+    <!--<h3>Импорт</h3>-->
+    <!-- <div v-html="importedText"></div>-->
   </div>
 </template>
 

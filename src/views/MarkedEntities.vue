@@ -16,19 +16,18 @@
     <!--<button type="button" class="btn" v-on:click="addSelectionToResult">
       Добавить в result
     </button>-->
-    <button type="button" class="btn" v-on:click="exportTextWithMarkTags">
+    <!--<button type="button" class="btn" v-on:click="exportTextWithMarkTags">
       Экспорт
-    </button>
-    <button type="button" class="btn" v-on:click="importTextWithMarkTags">
+    </button>-->
+    <!--<button type="button" class="btn" v-on:click="importTextWithMarkTags">
       Импорт
-    </button>
+    </button>-->
 
     <!--<ResultFromSelections
       v-bind:result="resultArray" />-->
 
-    <h3>Экспорт</h3>
-    <!--TODO можно подсветку тегов сделать-->
-    <div ref="exportDiv" class="export">{{ exportedText }}</div>
+    <!--<h3>Экспорт</h3>-->
+    <!--<div ref="exportDiv" class="export">{{ exportedText }}</div>-->
 
   </div>
 </template>
@@ -65,12 +64,12 @@
         this.resultArray.push(this.selection.toString());
       },
       //методы экспорта/импорта
-      exportTextWithMarkTags() {
+      /*exportTextWithMarkTags() {
         this.exportedText = this.$refs.TextForMark.$refs.textDiv.innerHTML;
-      },
-      importTextWithMarkTags() {
+      },*/
+      /*importTextWithMarkTags() {
         this.importedText = this.exportedText;
-      },
+      },*/
     },
   };
 </script>

@@ -16,7 +16,14 @@
         </button>
 
       </li>
-
+      <!--кнопка удаления-->
+      <li class="tags-list__item tags-list__item--last">
+        <button type="button"
+                class="tags-list__btn tags-list__btn--delete"
+                v-on:click="deleteMarkTag">
+          Убрать выделение
+        </button>
+      </li>
     </ul>
   </div>
 </template>
@@ -43,14 +50,13 @@
       };
     },
     methods: {
-      //TODO можно добавить один и тот же марк к одному и тому же выделенному фрагменту
-      //поправить это
       //добавляем вокруг селекшена тег mark
       addTagMark(event) {
         if (!this.selection ||
           this.selection.isCollapsed ||
           Object.getOwnPropertyNames(this.selection).length) {
           // window.alert('Сначала выделите текст');
+          return;
         } else {
           let markNode = this.createMarkNode(event);
           this.range.surroundContents(markNode);
@@ -64,18 +70,39 @@
         let dataName = document.createAttribute('data-name');
         let style = document.createAttribute('style');
         let tooltip = document.createAttribute('tooltip');
+        let id = document.createAttribute('id');
         dataName.value = event.target.dataset.name;
         style.value = `border-color: ${event.target.style.borderColor};`;
         tooltip.value = event.target.dataset.label;
+        id.value = this.setRandomId();
         markNode.setAttributeNode(dataName);
         markNode.setAttributeNode(style);
         markNode.setAttributeNode(tooltip);
+        markNode.setAttributeNode(id);
 
         return markNode;
       },
       //рандомное подставление цветов
       generateColor() {
         return '#' + Math.floor(Math.random() * 16777215).toString(16);
+      },
+      //рандомное подставление id для различения одинаковых марков для удаления
+      setRandomId() {
+        return `id${Math.floor(Math.random() * 100)}`;
+      },
+      //убираем выделение с тега
+      deleteMarkTag() {
+        if (!this.selection ||
+          this.selection.isCollapsed ||
+          Object.getOwnPropertyNames(this.selection).length) {
+          // window.alert('Сначала выделите текст');
+          return;
+        } else {
+          let markNode = this.selection.anchorNode.parentElement;
+          let marksHTMLCollection = document.getElementsByTagName('mark');
+          let theMark = marksHTMLCollection.namedItem(markNode.id);
+          theMark.outerHTML = theMark.innerHTML;
+        }
       },
     },
   };
