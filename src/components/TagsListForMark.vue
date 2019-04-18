@@ -47,6 +47,7 @@
     data() {
       return {
         tagList: jsonList,
+        selectionPointsArray: [],
       };
     },
     methods: {
@@ -58,9 +59,26 @@
           // window.alert('Сначала выделите текст');
           return;
         } else {
+          //добавляем в массив селекшен точек
+          let digitsObj = {};
+          digitsObj.anchorOffset = this.selection.anchorOffset;
+          console.log(digitsObj.anchorOffset);
+          digitsObj.focusOffset = this.selection.focusOffset;
+          console.log(digitsObj.focusOffset);
+
           let markNode = this.createMarkNode(event);
+
+          digitsObj.dataName = markNode.dataset.name;
+
+          console.log(digitsObj);
+          this.selectionPointsArray.push(digitsObj);
+          console.log('TLM=', this.selectionPointsArray);
+
           this.range.surroundContents(markNode);
           // this.selection.removeAllRanges();
+
+          //эмиссия полученного массива точек селекшена и data-name mark
+          this.$emit('setselectionpointsarray', this.selectionPointsArray);
         }
       },
       //создаём тег mark с нужным обвесом
@@ -98,6 +116,8 @@
           // window.alert('Сначала выделите текст');
           return;
         } else {
+          //удаляем из массива селекшен точек
+
           let markNode = this.selection.anchorNode.parentElement;
           let marksHTMLCollection = document.getElementsByTagName('mark');
           let theMark = marksHTMLCollection.namedItem(markNode.id);

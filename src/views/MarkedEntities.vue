@@ -9,13 +9,14 @@
 
       <TagsListForMark
         v-bind:range="range"
-        v-bind:selection="selection" />
+        v-bind:selection="selection"
+        v-on:setselectionpointsarray="getSelectionPointsFromChildComponent" />
 
     </div>
 
-    <!--<button type="button" class="btn" v-on:click="addSelectionToResult">
+    <button type="button" class="btn" v-on:click="addSelectionToResult">
       Добавить в result
-    </button>-->
+    </button>
     <!--<button type="button" class="btn" v-on:click="exportTextWithMarkTags">
       Экспорт
     </button>-->
@@ -23,8 +24,8 @@
       Импорт
     </button>-->
 
-    <!--<ResultFromSelections
-      v-bind:result="resultArray" />-->
+    <ResultFromSelections
+      v-bind:result="resultArray" />
 
     <!--<h3>Экспорт</h3>-->
     <!--<div ref="exportDiv" class="export">{{ exportedText }}</div>-->
@@ -40,7 +41,7 @@
   export default {
     name: 'MarkedEntities',
     components: {
-      // ResultFromSelections,
+      ResultFromSelections,
       TagsListForMark,
       TextForMark,
     },
@@ -49,8 +50,9 @@
         selection: {},
         range: {},
         resultArray: [],
+        selectionPointsArray: [],
         exportedText: null,
-        importedText: null
+        importedText: null,
       };
     },
     methods: {
@@ -60,16 +62,21 @@
       getRangeFromChildComponent(range) {
         this.range = range;
       },
+      getSelectionPointsFromChildComponent(selectionPointsArray) {
+        this.selectionPointsArray = selectionPointsArray;
+        console.log('ME=', this.selectionPointsArray);
+      },
       addSelectionToResult() {
-        this.resultArray.push(this.selection.toString());
+        // this.resultArray.push(this.selection.toString());
+        this.resultArray = this.selectionPointsArray; //?
       },
       //методы экспорта/импорта
       /*exportTextWithMarkTags() {
-        this.exportedText = this.$refs.TextForMark.$refs.textDiv.innerHTML;
-      },*/
+       this.exportedText = this.$refs.TextForMark.$refs.textDiv.innerHTML;
+       },*/
       /*importTextWithMarkTags() {
-        this.importedText = this.exportedText;
-      },*/
+       this.importedText = this.exportedText;
+       },*/
     },
   };
 </script>
