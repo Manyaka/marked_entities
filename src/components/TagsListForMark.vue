@@ -62,17 +62,26 @@
           //добавляем в массив селекшен точек
           let digitsObj = {};
           digitsObj.anchorOffset = this.selection.anchorOffset;
-          console.log(digitsObj.anchorOffset);
           digitsObj.focusOffset = this.selection.focusOffset;
+
+          //если селекшн внутри другого селекшена, то надо это как-то определять
+          // this.selection.containsNode(this.textDiv, true);
+          let markElement = this.selection.anchorNode.parentElement; //mark
+          if (markElement.tagName === 'MARK') {
+            digitsObj.anchorOffset = markElement.dataset.anchorOffset;
+            digitsObj.focusOffset = markElement.dataset.focusOffset;
+          }
+
+          console.log(digitsObj.anchorOffset);
           console.log(digitsObj.focusOffset);
 
           let markNode = this.createMarkNode(event);
 
           digitsObj.dataName = markNode.dataset.name;
 
-          console.log(digitsObj);
+          // console.log(digitsObj);
           this.selectionPointsArray.push(digitsObj);
-          console.log('TLM=', this.selectionPointsArray);
+          // console.log('TLM=', this.selectionPointsArray);
 
           this.range.surroundContents(markNode);
           // this.selection.removeAllRanges();
@@ -85,18 +94,27 @@
       //TODO mark сделать компонентом?
       createMarkNode(event) {
         let markNode = document.createElement('mark');
+
         let dataName = document.createAttribute('data-name');
         let style = document.createAttribute('style');
         let tooltip = document.createAttribute('tooltip');
         let id = document.createAttribute('id');
+        let dataAnchorOffset = document.createAttribute('data-anchoroffset');
+        let dataFocusOffset = document.createAttribute('data-focusoffset');
+
         dataName.value = event.target.dataset.name;
         style.value = `border-color: ${event.target.style.borderColor};`;
         tooltip.value = event.target.dataset.label;
         id.value = this.setRandomId();
+        dataAnchorOffset.value = this.selection.anchorOffset;
+        dataFocusOffset.value = this.selection.focusOffset;
+
         markNode.setAttributeNode(dataName);
         markNode.setAttributeNode(style);
         markNode.setAttributeNode(tooltip);
         markNode.setAttributeNode(id);
+        markNode.setAttributeNode(dataAnchorOffset);
+        markNode.setAttributeNode(dataFocusOffset);
 
         return markNode;
       },
