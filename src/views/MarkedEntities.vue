@@ -64,7 +64,7 @@
       },
       getSelectionPointsFromChildComponent(selectionPointsArray) {
         this.selectionPointsArray = selectionPointsArray;
-        console.log('ME=', this.selectionPointsArray);
+        // console.log('ME=', this.selectionPointsArray);
       },
       addSelectionToResult() {
         // this.resultArray.push(this.selection.toString());

@@ -59,6 +59,7 @@
           // window.alert('Сначала выделите текст');
           return;
         } else {
+          console.log(this.range);
           //добавляем в массив селекшен точек
           let digitsObj = {};
           digitsObj.anchorOffset = this.selection.anchorOffset;
@@ -68,8 +69,13 @@
           // this.selection.containsNode(this.textDiv, true);
           let markElement = this.selection.anchorNode.parentElement; //mark
           if (markElement.tagName === 'MARK') {
-            digitsObj.anchorOffset = markElement.dataset.anchorOffset;
-            digitsObj.focusOffset = markElement.dataset.focusOffset;
+            console.log(markElement.dataset);
+            digitsObj.anchorOffset =
+              parseInt(markElement.dataset.anchoroffset) +
+              parseInt(this.selection.anchorOffset);
+            digitsObj.focusOffset =
+              parseInt(markElement.dataset.anchoroffset) +
+              parseInt(this.selection.focusOffset);
           }
 
           console.log(digitsObj.anchorOffset);
