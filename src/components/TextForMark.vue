@@ -68,14 +68,14 @@
         }
       };
       document.addEventListener('selectionchange', this.sel);
-      this.$watch(
+      /*this.$watch(
         'textDiv',
         function(newVal, oldVal) {
           console.log('newVal=', newVal);
           console.log('oldVal=', oldVal);
         },
         { deep: true },
-      );
+      );*/
     },
     updated() {
     },
