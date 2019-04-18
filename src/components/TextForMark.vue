@@ -16,6 +16,13 @@
   import jsonTextLong from '../json/textLong.json';
   import jsonTextShort from '../json/textShort.json';
 
+  /*function mtRand(min, max) {
+   let diff = max - min;
+   return Math.floor(Math.random() * (diff + 1)) + min;
+   }*/
+
+  // console.log(mtRand);
+
   export default {
     name: 'TextForMark',
     props: {
@@ -34,6 +41,21 @@
         textDiv: null,
       };
     },
+    /*computed: {
+     textDiv: function() {
+     console.log();
+     }
+     },*/
+    /*watch: {
+      textDiv: {
+        handler: function(newVal, oldVal) {
+          console.log('newVal=', newVal);
+          console.log('oldVal=', oldVal);
+        },
+        deep: true,
+        immediate: true,
+      },
+    },*/
     created() {
       // this.selection = '';
       // this.selectionChangeTimer = null;
@@ -46,6 +68,16 @@
         }
       };
       document.addEventListener('selectionchange', this.sel);
+      this.$watch(
+        'textDiv',
+        function(newVal, oldVal) {
+          console.log('newVal=', newVal);
+          console.log('oldVal=', oldVal);
+        },
+        { deep: true },
+      );
+    },
+    updated() {
     },
     beforeDestroy() {
       //убрать за собой
