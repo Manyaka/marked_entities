@@ -59,7 +59,6 @@
           // window.alert('Сначала выделите текст');
           return;
         } else {
-          console.log(this.range);
           //добавляем в массив селекшен точек
           let digitsObj = {};
           digitsObj.anchorOffset = this.selection.anchorOffset;
@@ -69,7 +68,7 @@
           // this.selection.containsNode(this.textDiv, true);
           let markElement = this.selection.anchorNode.parentElement; //mark
           if (markElement.tagName === 'MARK') {
-            console.log(markElement.dataset);
+            // console.log(markElement.dataset);
             digitsObj.anchorOffset =
               parseInt(markElement.dataset.anchoroffset) +
               parseInt(this.selection.anchorOffset);
@@ -78,8 +77,8 @@
               parseInt(this.selection.focusOffset);
           }
 
-          console.log(digitsObj.anchorOffset);
-          console.log(digitsObj.focusOffset);
+          // console.log(digitsObj.anchorOffset);
+          // console.log(digitsObj.focusOffset);
 
           let markNode = this.createMarkNode(event);
 
