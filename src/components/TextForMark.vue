@@ -1,15 +1,13 @@
 <template>
   <div class="main__text">
-    <h3>Начальный текст</h3>
+    <!--<h3>Начальный текст</h3>-->
     <div ref="textDiv">
       <!--{{ textLong }}-->
       {{ textShort }}
     </div>
-    <hr>
-    <!--TODO чтобы не было 2 экземпляра текста, надо оригинальный заменять
-    импортнутым?-->
-    <h3>Импорт</h3>
-    <div v-html="importedText"></div>
+    <!--<hr>-->
+    <!--<h3>Импорт</h3>-->
+    <!-- <div v-html="importedText"></div>-->
   </div>
 </template>
 
@@ -17,6 +15,13 @@
   //TODO api.js
   import jsonTextLong from '../json/textLong.json';
   import jsonTextShort from '../json/textShort.json';
+
+  /*function mtRand(min, max) {
+   let diff = max - min;
+   return Math.floor(Math.random() * (diff + 1)) + min;
+   }*/
+
+  // console.log(mtRand);
 
   export default {
     name: 'TextForMark',
@@ -36,6 +41,21 @@
         textDiv: null,
       };
     },
+    /*computed: {
+     textDiv: function() {
+     console.log();
+     }
+     },*/
+    /*watch: {
+      textDiv: {
+        handler: function(newVal, oldVal) {
+          console.log('newVal=', newVal);
+          console.log('oldVal=', oldVal);
+        },
+        deep: true,
+        immediate: true,
+      },
+    },*/
     created() {
       // this.selection = '';
       // this.selectionChangeTimer = null;
@@ -48,6 +68,16 @@
         }
       };
       document.addEventListener('selectionchange', this.sel);
+      /*this.$watch(
+        'textDiv',
+        function(newVal, oldVal) {
+          console.log('newVal=', newVal);
+          console.log('oldVal=', oldVal);
+        },
+        { deep: true },
+      );*/
+    },
+    updated() {
     },
     beforeDestroy() {
       //убрать за собой

@@ -6,3 +6,5 @@ Vue.config.productionTip = false;
 new Vue({
   render: (h) => h(App)
 }).$mount('[data-id="app"]');
+
+// console.log('mm', document);

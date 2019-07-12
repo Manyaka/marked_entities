@@ -11,19 +11,10 @@
   ],
   "rules": {
     // override default options for rules from base configurations
-    "arrow-parens": [
-      "warn",
-      "always"
-    ],
-    "comma-dangle": [
-      "warn",
-      "only-multiline"
-    ],
+    "arrow-parens": ["warn", "always"],
+    "comma-dangle": ["warn", "only-multiline"],
     // disable rules from base configurations
-    "indent": [
-      "off",
-      2
-    ],
+    "indent": ["off", 2],
     "no-console": "off",
     "no-debugger": "off",
     "prefer-const": "off",
@@ -40,8 +31,8 @@
         }
       }
     ],
-    "vue/v-bind-style": "longform",
-    "vue/v-on-style": "longform",
+    "vue/v-bind-style": ["warn", "longform"],
+    "vue/v-on-style": ["warn", "longform"],
     "vue/singleline-html-element-content-newline": "off",
     "vue/max-attributes-per-line": [
       "warn",
@@ -72,10 +63,7 @@
       "warn",
       {
         "ignoreWhenEmpty": true,
-        "ignores": [
-          "pre",
-          "textarea"
-        ],
+        "ignores": ["pre", "textarea"],
         "allowEmptyLines": true
       }
     ]
