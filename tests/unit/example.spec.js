@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import MarkedEntities from "@/components/MarkedEntities.vue";
+import MarkedEntities from "@/views/MarkedEntities.vue";
 
 describe("MarkedEntities.vue", () => {
   it("renders props.msg when passed", () => {

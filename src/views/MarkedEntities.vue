@@ -81,4 +81,4 @@
   };
 </script>
 
-<style src="./MarkedEntities.css"></style>
+<style src="./MarkedEntities.css" />

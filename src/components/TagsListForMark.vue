@@ -151,4 +151,4 @@
   };
 </script>
 
-<style src="./TagsListForMark.css"></style>
+<style src="./TagsListForMark.css" />

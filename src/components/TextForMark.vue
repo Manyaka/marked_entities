@@ -103,4 +103,4 @@
   };
 </script>
 
-<style src="./TextForMark.css"></style>
+<style src="./TextForMark.css" />

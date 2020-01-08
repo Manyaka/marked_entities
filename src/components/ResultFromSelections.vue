@@ -16,4 +16,4 @@
   };
 </script>
 
-<style src="./ResultFromSelections.css"></style>
+<style src="./ResultFromSelections.css" />
